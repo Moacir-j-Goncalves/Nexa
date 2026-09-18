@@ -1,0 +1,155 @@
+/* Fonte global igual à tela de login */
+* {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Remove margens padrão do navegador */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* garante altura total */
+}
+
+/* Container principal */
+.primeiro-container {
+  min-height: 100vh;              /* ocupa toda a altura da viewport */
+  width: 100%;                    /* ocupa toda a largura */
+  background-size: cover;         /* cobre toda a área sem distorcer */
+  background-position: center;    /* centraliza a imagem */
+  background-repeat: no-repeat;   /* evita repetição */
+  background-attachment: fixed;   /* fixa a imagem no fundo */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;              /* espaço superior */
+}
+
+/* Menu fixo no topo */
+.menu-topo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* Caixa central com bordas mais arredondadas */
+.primeiro-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 30px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+
+  /* espaçamento para não encostar no topo nem no piso */
+  margin: 60px auto;   /* 60px em cima e embaixo, auto nas laterais */
+}
+
+
+/* Logo clicável */
+.logo {
+  width: 60px;
+  margin-bottom: 12px;            /* espaço reduzido */
+  cursor: pointer;
+}
+
+/* Título principal */
+.titulo {
+  font-size: 20px;
+  margin-bottom: 6px;             /* menos espaço */
+  color: #333;
+  font-weight: bold;
+}
+
+/* Texto de descrição */
+.descricao {
+  margin-bottom: 12px;
+  color: #555;
+  font-size: 13px;
+}
+
+/* Container dos botões de escolha */
+.tipo-cadastro {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;            /* menos espaço */
+}
+
+/* Botões de escolha com bordas arredondadas */
+.tipo-btn {
+  flex: 1;
+  margin: 0 4px;
+  padding: 8px;                   /* altura menor */
+  background-color: #800000;
+  color: #fff;
+  border: none;
+  border-radius: 30px;            /* mais arredondado */
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.tipo-btn:hover:not(:disabled) {
+  background-color: #a00000;
+}
+
+.tipo-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.tipo-btn.ativo {
+  background-color: #800000;
+}
+
+/* Grupo de inputs */
+.input-group {
+  text-align: left;
+  margin-bottom: 8px;             /* menos espaço */
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 3px;             /* menos espaço */
+  font-weight: bold;
+  color: #333;
+  font-size: 12px;
+}
+
+/* Inputs menores e arredondados */
+.input-group input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #aaa;
+  border-radius: 20px;            /* bordas mais arredondadas */
+  font-size: 13px;
+}
+
+/* Botão de criar conta */
+.btn-criar {
+  width: 100%;
+  padding: 10px;                  /* altura menor */
+  background-color: #800000;
+  color: #fff;
+  border: none;
+  border-radius: 30px;            /* mais arredondado */
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.btn-criar:hover {
+  background-color: #a00000;
+}
+
+/* Link para voltar */
+.voltar {
+  margin-top: 12px;               /* menos espaço */
+  color: #800000;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 13px;
+}

@@ -1,0 +1,156 @@
+.assinatura {
+    min-height: 100vh;
+    background-image: url("../../Componentes/Imagens/nexa_fundo.jpg"); /* fundo aplicado */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Conteúdo central */
+.assinatura__conteudo {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 52px 24px 64px;
+    text-align: center;
+}
+
+/* Subtag */
+.assinatura__subtag {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+/* Título */
+.assinatura__titulo {
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+/* Descrição */
+.assinatura__descricao {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 36px;
+}
+
+/* Planos */
+.assinatura__planos {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 36px;
+}
+
+.plano {
+    background-color: rgba(255,255,255,0.9); /* fundo branco suave */
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 2px solid transparent;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    position: relative;
+    text-align: left;
+}
+
+.plano:hover {
+    border-color: #6b1a22; /* borda vinho ao passar o mouse */
+    box-shadow: 0 6px 20px rgba(107, 26, 34, 0.3); /* sombra vinho */
+}
+
+.plano--selecionado {
+    border-color: #6b1a22; /* borda vinho quando selecionado */
+    box-shadow: 0 6px 20px rgba(107, 26, 34, 0.4);
+}
+
+/* Badge dos planos (Básico e Profissional iguais) */
+.plano__badge {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #6b1a22; /* ✅ cor vinho */
+    color: #fff;               /* ✅ texto branco */
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Textos internos dos planos */
+.plano__nome,
+.plano__valor,
+.plano__periodo,
+.plano__beneficios li {
+    color: #000; /* ✅ textos internos em preto */
+}
+
+/* Radio (seleção do plano) */
+.plano__radio {
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+    border: 1.5px solid #6b1a22; /* ✅ borda vinho */
+    color: #000;
+    transition: background-color 0.18s, border-color 0.18s, color 0.18s;
+    margin-top: 4px;
+}
+
+.plano__radio--ativo {
+    background-color: #6b1a22; /* ✅ fundo vinho */
+    border-color: #6b1a22;     /* ✅ borda vinho */
+    color: #fff;               /* ✅ texto branco */
+}
+
+/* Rodapé */
+.assinatura__rodape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.assinatura__nota {
+    font-size: 0.8rem;
+    color: #6b1a22; /* ✅ nota em vinho */
+}
+
+/* Botões da assinatura */
+.assinatura__rodape .botao {
+    width: 100%;
+    max-width: 340px;
+    padding: 18px 18px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+
+    /* >>> Aqui você pode mudar a cor do botão <<< */
+    background-color: #ffffff; /* ✅ fundo branco */
+    color: #6b1a22;            /* ✅ texto vinho */
+    border: 2px solid #6b1a22; /* ✅ borda vinho */
+}
+
+.assinatura__rodape .botao:hover {
+    background-color:  #6b1a22; /* cor ao passar o mouse */
+}

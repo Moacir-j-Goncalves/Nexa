@@ -1,0 +1,82 @@
+
+.menu-barra {
+  background-color: rgb(63, 17, 22);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Botão hamburguer */
+.menu-hamburguer {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.menu-hamburguer span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #fdf6f0;
+}
+
+/* Logo */
+.menu-logo {
+  color: #fdf6f0;
+  font-size: 18px;
+  font-family: serif;
+  letter-spacing: 2px;
+}
+
+/* Menu lateral */
+.menu-lateral {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fdf6f0;
+  width: 220px; /* antes 260px */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  border-radius: 0 20px 20px 0;
+  overflow: hidden;
+  z-index: 999;
+  transition: all 0.35s ease;
+  opacity: 0;
+  transform: translateX(-40px);
+  pointer-events: none;
+}
+
+.menu-lateral.aberto {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* Botões */
+.menu-botao {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 14px; /* menor */
+  padding: 10px 16px; /* mais compacto */
+  border: none;
+  border-bottom: 1px solid #f0e0d8;
+  background-color: transparent;
+  color: #3d0c0c;
+  cursor: pointer;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.menu-botao:hover {
+  background-color: #f0e0d8;
+  transform: translateX(10px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}

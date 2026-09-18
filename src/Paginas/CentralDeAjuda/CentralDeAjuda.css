@@ -1,0 +1,76 @@
+.ajuda-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+  font-family: sans-serif;
+}
+
+.ajuda-card-principal {
+  background-color: #fdf6f0;
+  border-radius: 24px;
+  padding: 40px 32px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.ajuda-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #9e6b6b;
+  margin: 0 0 4px;
+  text-transform: uppercase;
+}
+
+.ajuda-titulo {
+  font-family: serif;
+  font-size: 32px;
+  color: #3d0c0c;
+  margin: 0 0 8px;
+}
+
+.ajuda-divider {
+  text-align: center;
+  color: #c9a09a;
+  font-size: 12px;
+  margin: 20px 0;
+  letter-spacing: 4px;
+}
+
+.ajuda-item {
+  border: 1px solid #e8d5cc;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+
+.ajuda-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ajuda-item-titulo {
+  font-size: 15px;
+  color: #3d0c0c;
+  margin: 0;
+  font-family: serif;
+}
+
+.ajuda-seta {
+  font-size: 12px;
+  color: #9e6b6b;
+  margin-left: 10px;
+}
+
+.ajuda-item-texto {
+  font-size: 14px;
+  color: #9e6b6b;
+  margin: 12px 0 0;
+  line-height: 1.7;
+}
+

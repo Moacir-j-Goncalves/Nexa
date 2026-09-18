@@ -1,0 +1,252 @@
+/* Área principal da página */
+.home {
+  background-size: cover;          /* imagem de fundo cobre toda a área */
+  background-position: center;     /* centraliza a imagem de fundo */
+  min-height: 100vh;               /* altura mínima: tela inteira */
+}
+
+.home-content {
+  max-width: 1200px;               /* largura máxima do conteúdo */
+  margin: 0 auto;                  /* centraliza horizontalmente */
+  padding: 40px;                   /* espaçamento interno */
+}
+
+/* HERO (título e subtítulo de boas-vindas) */
+.hero {
+  text-align: center;
+  color: #fff;
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #f1d8d2;
+  margin-bottom: 30px;
+}
+
+/* SEÇÃO DE CATEGORIAS */
+.categories {
+  margin-bottom: 40px;
+  text-align: left;                /* título alinhado à esquerda */
+}
+
+.categories h2 {
+  color: white;
+  margin-bottom: 15px;
+  text-align: left;                /* título encostado no canto esquerdo */
+}
+
+/* Container do carrossel */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Faixa de balões */
+.carousel {
+  display: flex;
+  overflow-x: auto;                /* ativa rolagem horizontal */
+  scroll-behavior: smooth;
+  gap: 16px;                       /* espaço entre balões */
+  padding: 12px;                   /* espaço interno */
+  width: 100%;
+  scroll-snap-type: x mandatory;   /* força snap horizontal */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;                   /* esconde barra de rolagem */
+}
+
+/* Balões (cards de categoria) */
+.card {
+  flex: 0 0 220px;                 /* largura fixa */
+  height: 100px;                   /* altura fixa */
+  background: #fdf6f0;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #5b0012;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  scroll-snap-align: start;        /* garante que o balão apareça inteiro */
+}
+
+.card:hover {
+  transform: scale(1.05);          /* efeito de zoom ao passar o mouse */
+}
+
+/* BOTÕES DE NAVEGAÇÃO ENCOSTADOS NO CANTO DA TELA */
+.carousel-btn {
+  position: absolute;
+  top: 50%;                        /* centraliza na altura dos balões */
+  transform: translateY(-50%);
+  background: rgba(122, 28, 28, 0.6); /* cor semi-transparente */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  font-size: 22px;
+  transition: background 0.3s, box-shadow 0.3s;
+  z-index: 20;                     /* garante que fique acima dos balões */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* sombra suave */
+}
+
+.carousel-btn.left {
+  left: -60px;                     /* fora dos balões, encostado no canto esquerdo */
+}
+
+.carousel-btn.right {
+  right: -60px;                    /* fora dos balões, encostado no canto direito */
+}
+
+.carousel-btn:hover {
+  background: rgba(61, 12, 12, 0.8); /* mais escuro ao passar o mouse */
+}
+
+/* SEARCH BOX (barra de busca) */
+.search-box {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  outline: none;
+  border-radius: 12px 0 0 12px;
+}
+
+.search-box button {
+  border: none;
+  background:#7d0f24;
+  color: white;
+  padding: 0 25px;
+  border-radius: 0 12px 12px 0;
+  cursor: pointer;
+}
+
+/* TITULOS */
+.categories h2,
+.featured h2 {
+  color: white;
+  margin-bottom: 20px;
+  text-align: left;                /* títulos encostados à esquerda */
+}
+
+/* DESTAQUES (profissionais) */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.professional-card {
+  background: #f8f3f0;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.professional-card h3 {
+  color: #5b0012;
+  margin-bottom: 10px;
+}
+
+.professional-card p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.professional-card button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #5b0012;
+  color: white;
+  cursor: pointer;
+}
+
+.professional-card button:hover {
+  background: #7d0f24;
+}
+.home {
+    min-height: 100vh;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.home__hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+}
+
+.home__hero-titulo {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 800;
+    color: #D7BDA6;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.home__hero-titulo span {
+    color: #AB7743;
+}
+
+.home__hero-texto {
+    font-size: 1.05rem;
+    color: #B7957F;
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 36px;
+}
+
+.home__footer {
+    text-align: center;
+    padding: 24px;
+    border-top: 1px solid rgba(183, 149, 127, 0.12);
+    color: #B7957F;
+    font-size: 0.8rem;
+}
+
+.home__logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #D7BDA6;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.home__logo span {
+    color: #AB7743;
+}
