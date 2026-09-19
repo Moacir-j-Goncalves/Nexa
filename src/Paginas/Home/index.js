@@ -74,10 +74,14 @@ function Home() {
           <div className="carousel-container">
             <button className="carousel-btn left" onClick={() => scrollCarousel(-1)}>◀</button>
             <div className="carousel" id="carousel">
-              <div className="card" onClick={() => irParaCategoria('saloes')}>💇 Salões de beleza</div>
-              <div className="card" onClick={() => irParaCategoria('manicure')}>💅 Manicure</div>
-              <div className="card" onClick={() => irParaCategoria('estetica')}>💆 Estética</div>
-              <div className="card" onClick={() => irParaCategoria('academia')}>🏋️ Academia</div>
+              <div className="card" onClick={() => irParaCategoria('saloes')}> Salões de beleza</div>
+              <div className="card" onClick={() => irParaCategoria('manicure')}> Manicure e Pedicure</div>
+              <div className="card" onClick={() => irParaCategoria('estetica')}> Nutricionaista</div>
+              <div className="card" onClick={() => irParaCategoria('academia')}> Personal trainer</div>
+              <div className="card" onClick={() => irParaCategoria('adicionar')}> Fisioterapeuta</div>
+              <div className="card" onClick={() => irParaCategoria('adicionar')}> Psicólogo</div>
+              <div className="card" onClick={() => irParaCategoria('adicionar')}> Massagista</div>
+              <div className="card" onClick={() => irParaCategoria('adicionar')}> adicionar</div>
               <div className="card" onClick={() => irParaCategoria('adicionar')}> adicionar</div>
               <div className="card" onClick={() => irParaCategoria('adicionar')}> adicionar</div>
               <div className="card" onClick={() => irParaCategoria('adicionar')}> adicionar</div>
@@ -88,7 +92,7 @@ function Home() {
         </section>
 
         <section className="featured">
-          <h2>Destaques</h2>
+          <h2>Proximos de você</h2>
           <div className="featured-grid">
 
           <div className="professional-card" onClick={() => navigate('/perfil-salao/1')}>
@@ -112,10 +116,39 @@ function Home() {
   <p>⭐ 5.0</p>
   <button onClick={(e) => { e.stopPropagation(); navigate('/perfil-salao/3'); }}>Ver Perfil</button>
 </div>
-
-
-          </div>
+  </div>
         </section>
+
+      <section>
+        <h2>Mais avaliados</h2>
+
+                <div className="featured-grid">
+
+                <div className="professional-card" onClick={() => navigate('/perfil-salao/1')}>
+        <img src={studioBellaImg} alt="Studio Bella" className="card-img" />
+        <h3>Studio Bella</h3>
+        <p>⭐ 4.9</p>
+        <button onClick={(e) => { e.stopPropagation(); navigate('/perfil-salao/1'); }}>Ver Perfil</button>
+      </div>
+
+      <div className="professional-card" onClick={() => navigate('/perfil-salao/2')}>
+        <img src={espacoGlamourImg} alt="Espaço Glamour" className="card-img" />
+        <h3>Espaço Glamour</h3>
+        <p>⭐ 4.8</p>
+        <button onClick={(e) => { e.stopPropagation(); navigate('/perfil-salao/2'); }}>Ver Perfil</button>
+      </div>
+
+      <div className="professional-card" onClick={() => navigate('/perfil-salao/3')}>
+        <img src={beautyCenterImg} alt="Beauty Center" className="card-img" />
+        <h3>Beauty Center</h3>
+        
+        <p>⭐ 5.0</p>
+        <button onClick={(e) => { e.stopPropagation(); navigate('/perfil-salao/3'); }}>Ver Perfil</button>
+      </div>
+      </div>
+      </section>
+
+
 
       </main>
     </div>
