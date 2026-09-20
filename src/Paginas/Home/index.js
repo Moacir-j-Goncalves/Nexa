@@ -69,7 +69,6 @@ function Home() {
           </div>
         </section>
 
-          <section className="categories">
           <section className="categorias">
           <h2>Categorias</h2>
           <div className="carousel-container">
