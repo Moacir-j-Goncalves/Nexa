@@ -1,321 +1,291 @@
-/* Área principal da página */
+/* RESET E CONFIGURAÇÕES GERAIS */
+/* Remove margens e paddings padrão de todos os elementos e ativa o box-sizing padding-box */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Define a fonte padrão para o corpo da aplicação */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Garante que imagens não ultrapassem a largura do seu elemento pai */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* UTILITÁRIOS DE LAYOUT */
+/* Container genérico centralizado com largura máxima */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Layout flexível para a barra de navegação/menu */
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ESTRUTURA PRINCIPAL DA PÁGINA (HOME) */
+/* Configuração do fundo e layout vertical principal */
 .home {
-  background-size: cover;          /* imagem de fundo cobre toda a área */
-  background-position: center;     /* centraliza a imagem de fundo */
-  min-height: 100vh;               /* altura mínima: tela inteira */
+  background-size: cover;          /* Imagem de fundo cobre toda a área */
+  background-position: center;     /* Centraliza a imagem de fundo */
+  min-height: 100vh;               /* Altura mínima de tela cheia */
+  background-color: transparent;   /* Fundo transparente para permitir imagens de fundo */
+  display: flex;                   /* Alinha o conteúdo interno em flexbox */
+  flex-direction: column;          /* Organiza os elementos filhos em coluna */
 }
 
+/* Conteúdo centralizado da Home */
 .home-content {
-  max-width: 1200px;               /* largura máxima do conteúdo */
-  margin: 0 auto;                  /* centraliza horizontalmente */
-  padding: 40px;                   /* espaçamento interno */
+  max-width: 1200px;               /* Largura máxima do conteúdo */
+  margin: 0 auto;                  /* Centraliza o conteúdo horizontalmente */
+  padding: 40px;                   /* Espaçamento interno */
 }
 
-/* HERO (título e subtítulo de boas-vindas) */
+/* SEÇÃO HERO PRINCIPAL (Boas-vindas e busca) */
 .hero {
-  text-align: center;
-  color: #fff;
-  margin-top: 40px;
-  margin-bottom: 80px;
+  text-align: center;              /* Centraliza os textos */
+  color: #fff;                     /* Texto branco */
+  margin-top: 40px;                /* Margem superior */
+  margin-bottom: 80px;             /* Margem inferior antes das categorias */
 }
 
 .hero h1 {
-  font-size: 3rem;
-  margin-bottom: 15px;
+  font-size: 3rem;                 /* Tamanho do título principal */
+  margin-bottom: 15px;             /* Espaço abaixo do título */
 }
 
 .hero p {
-  font-size: 1.1rem;
-  color: #f1d8d2;
-  margin-bottom: 30px;
+  font-size: 1.1rem;               /* Tamanho do subtítulo */
+  color: #f1d8d2;                  /* Cor do texto em tom pastel */
+  margin-bottom: 30px;             /* Espaço abaixo do subtítulo */
 }
 
-/* SEÇÃO DE CATEGORIAS */
-.categories {
-  margin-bottom: 40px;
-  text-align: left;                /* título alinhado à esquerda */
-}
-
-.categories h2 {
-  color: white;
-  margin-bottom: 15px;
-  text-align: left;                /* título encostado no canto esquerdo */
-}
-
-/* Container do carrossel */
-.carousel-container {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-}
-
-/* Faixa de balões */
-.carousel {
-  display: flex;
-  overflow-x: auto;                /* ativa rolagem horizontal */
-  scroll-behavior: smooth;
-  gap: 16px;                       /* espaço entre balões */
-  padding: 12px;                   /* espaço interno */
-  width: 100%;
-  scroll-snap-type: x mandatory;   /* força snap horizontal */
-}
-
-.carousel::-webkit-scrollbar {
-  display: none;                   /* esconde barra de rolagem */
-}
-
-/* Balões (cards de categoria) */
-.card {
-  flex: 0 0 220px;                 /* largura fixa */
-  height: 100px;                   /* altura fixa */
-  background: #fdf6f0;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #5b0012;
-  cursor: pointer;
-  text-align: center;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-  scroll-snap-align: start;        /* garante que o balão apareça inteiro */
-}
-
-.card:hover {
-  transform: scale(1.05);          /* efeito de zoom ao passar o mouse */
-}
-
-/* BOTÕES DE NAVEGAÇÃO ENCOSTADOS NO CANTO DA TELA */
-.carousel-btn {
-  position: absolute;
-  top: 50%;                        /* centraliza na altura dos balões */
-  transform: translateY(-50%);
-  background: rgba(122, 28, 28, 0.6); /* cor semi-transparente */
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  cursor: pointer;
-  font-size: 22px;
-  transition: background 0.3s, box-shadow 0.3s;
-  z-index: 20;                     /* garante que fique acima dos balões */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* sombra suave */
-}
-
-.carousel-btn.left {
-  left: -60px;                     /* fora dos balões, encostado no canto esquerdo */
-}
-
-.carousel-btn.right {
-  right: -60px;                    /* fora dos balões, encostado no canto direito */
-}
-
-.carousel-btn:hover {
-  background: rgba(61, 12, 12, 0.8); /* mais escuro ao passar o mouse */
-}
-
-/* SEARCH BOX (barra de busca) */
+/* BARRA DE BUSCA (SEARCH BOX) */
 .search-box {
-  max-width: 600px;
-  margin: auto;
-  display: flex;
+  max-width: 600px;                /* Largura máxima do campo de busca */
+  margin: auto;                    /* Centraliza a barra de busca */
+  display: flex;                   /* Alinha o input e o botão lado a lado */
 }
 
 .search-box input {
-  flex: 1;
-  padding: 15px;
-  border: none;
-  outline: none;
-  border-radius: 12px 0 0 12px;
+  flex: 1;                         /* Ocupa todo o espaço restante disponível */
+  padding: 15px;                   /* Espaçamento interno para digitação */
+  border: none;                    /* Remove borda padrão */
+  outline: none;                   /* Remove o contorno ao focar */
+  border-radius: 12px 0 0 12px;    /* Arredonda apenas os cantos esquerdos */
 }
 
 .search-box button {
-  border: none;
-  background:#7d0f24;
-  color: white;
-  padding: 0 25px;
-  border-radius: 0 12px 12px 0;
-  cursor: pointer;
+  border: none;                    /* Remove borda padrão */
+  background: #7d0f24;             /* Cor de fundo do botão (vinho) */
+  color: white;                    /* Texto branco */
+  padding: 0 25px;                 /* Espaçamento lateral interno */
+  border-radius: 0 12px 12px 0;    /* Arredonda apenas os cantos direitos */
+  cursor: pointer;                 /* Ícone de ponteiro ao passar o mouse */
 }
 
-/* TITULOS */
+/* SEÇÃO DE CATEGORIAS E CARROSSEL */
+.categories {
+  margin-bottom: 40px;             /* Espaçamento inferior */
+  text-align: left;                /* Alinhamento do texto à esquerda */
+}
+
 .categories h2,
-.featured h2 {
-  color: white;
-  margin-bottom: 20px;
-  text-align: left;                /* títulos encostados à esquerda */
+.categorias h2 {
+  color: #fdf6f0;                  /* Cor clara para o título */
+  margin-bottom: 20px;             /* Espaço abaixo do título */
+  text-align: left;                /* Título alinhado à esquerda */
 }
 
-/* DESTAQUES (profissionais) */
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+/* Container que envolve o carrossel e os botões de navegação */
+.carousel-container {
+  position: relative;              /* Referência de posicionamento para os botões absolutos */
+  width: 100%;                     /* Ocupa a largura total */
+  margin: 0 auto;                  /* Centralização */
 }
 
+/* Faixa de rolagem dos cards de categoria */
+.carousel {
+  display: flex;                   /* Exibe os cards lado a lado */
+  overflow-x: auto;                /* Ativa a rolagem horizontal */
+  scroll-behavior: smooth;         /* Efeito de rolagem suave */
+  gap: 16px;                       /* Espaço entre os cards */
+  padding: 12px;                   /* Espaçamento interno */
+  width: 100%;                     /* Ocupa a largura total */
+  scroll-snap-type: x mandatory;   /* Efeito de trava de rolagem nos cards */
+}
+
+/* Esconde a barra de rolagem horizontal nativa do navegador */
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Cards individuais do carrossel */
+.card {
+  flex: 0 0 220px;                 /* Largura fixa sem encolher ou expandir */
+  height: 100px;                   /* Altura fixa */
+  background: #fdf6f0;             /* Cor de fundo bege claro */
+  border-radius: 12px;             /* Cantos arredondados */
+  font-size: 16px;                 /* Tamanho do texto */
+  font-weight: bold;               /* Texto em negrito */
+  color: #5b0012;                  /* Cor do texto em vinho escuro */
+  cursor: pointer;                 /* Cursor de clique */
+  text-align: center;              /* Centralização do texto */
+  box-shadow: 0 0 8px rgba(0,0,0,0.1); /* Sombra suave */
+  display: flex;                   /* Flexbox para centralizar conteúdo */
+  align-items: center;             /* Centraliza verticalmente */
+  justify-content: center;         /* Centraliza horizontalmente */
+  transition: transform 0.3s ease; /* Transição suave para animações */
+  scroll-snap-align: start;        /* Alinha o card no início da rolagem */
+}
+
+.card:hover {
+  transform: scale(1.05);          /* Efeito de leve ampliação ao passar o mouse */
+}
+
+/* BOTÕES DE NAVEGAÇÃO DO CARROSSEL */
+.carousel-btn {
+  position: absolute;              /* Posicionamento absoluto em relação ao container */
+  top: 50%;                        /* Centraliza na metade da altura */
+  transform: translateY(-50%);     /* Ajuste fino para alinhamento vertical exato */
+  background: rgba(122, 28, 28, 0.6); /* Fundo vinho semi-transparente */
+  color: #fff;                     /* Ícone/Texto branco */
+  border: none;                    /* Remove borda */
+  border-radius: 50%;              /* Formato circular */
+  width: 48px;                     /* Largura do botão */
+  height: 48px;                    /* Altura do botão */
+  cursor: pointer;                 /* Cursor de clique */
+  font-size: 22px;                 /* Tamanho da seta/ícone */
+  transition: background 0.3s, box-shadow 0.3s; /* Animação de alteração de cor/sombra */
+  z-index: 20;                     /* Mantém o botão acima dos cards */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* Sombra de elevação */
+}
+
+.carousel-btn.left {
+  left: -60px;                     /* Posiciona fora do carrossel, à esquerda */
+}
+
+.carousel-btn.right {
+  right: -60px;                    /* Posiciona fora do carrossel, à direita */
+}
+
+.carousel-btn:hover {
+  background: rgba(61, 12, 12, 0.8); /* Fundo mais escuro no hover */
+}
+
+/* SEÇÃO DE CARTÕES DE PROFISSIONAIS (MAIS AVALIADOS) */
+.Cards h2 {
+  color: #fdf6f0;                  /* Cor clara para o título */
+  margin-bottom: 20px;             /* Espaço abaixo do título */
+  text-align: left;                /* Título alinhado à esquerda */
+}
+
+/* Grid para exibição dos cards de profissionais */
+.Card-grid {
+  display: grid;                   /* Layout em grelha */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo flexível */
+  gap: 25px;                       /* Espaçamento entre os cards */
+}
+
+/* Card individual do profissional */
 .professional-card {
-  background: #f8f3f0;
-  padding: 20px;
-  border-radius: 20px;
+  background: #f8f3f0;             /* Fundo do card */
+  padding: 20px;                   /* Espaçamento interno */
+  border-radius: 20px;             /* Cantos arredondados */
 }
 
+/* Imagem do profissional ou estabelecimento */
 .card-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  width: 100%;                     /* Ocupa a largura inteira do card */
+  height: 200px;                   /* Altura fixa */
+  object-fit: cover;               /* Ajusta a imagem sem distorcer */
+  border-radius: 10px;             /* Cantos arredondados na imagem */
+  margin-bottom: 1px;              /* Espaçamento inferior */
 }
 
 .professional-card h3 {
-  color: #5b0012;
-  margin-bottom: 10px;
+  color: #5b0012;                  /* Nome em tom vinho escuro */
+  margin-bottom: 10px;             /* Margem inferior */
 }
 
 .professional-card p {
-  color: #666;
-  margin-bottom: 15px;
+  color: #666;                     /* Texto secundário/avaliação em cinza */
+  margin-bottom: 15px;             /* Margem inferior */
 }
 
 .professional-card button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: #5b0012;
-  color: white;
-  cursor: pointer;
+  font-size: large;               /* Tamanho da fonte do botão */
+  width: 100%;                     /* Botão ocupa toda a largura */
+  padding: 12px;                   /* Espaçamento interno */
+  border: none;                    /* Sem borda */
+  border-radius: 10px;             /* Cantos arredondados */
+  background: #5b0012;             /* Cor principal do botão */
+  color: white;                    /* Texto branco */
+  cursor: pointer;                 /* Cursor de clique */
 }
 
 .professional-card button:hover {
-  background: #7d0f24;
-}
-.home {
-    min-height: 100vh;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
+  background: #7d0f24;             /* Cor mais clara ao passar o mouse */
 }
 
+/* SEÇÃO SECUNDÁRIA DE HERO / INSTITUCIONAL */
 .home__hero {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 24px;
+  flex: 1;                         /* Ocupa o espaço vertical flexível */
+  display: flex;                   /* Layout flexbox */
+  flex-direction: column;          /* Organiza o conteúdo em coluna */
+  align-items: center;             /* Centraliza horizontalmente */
+  justify-content: center;         /* Centraliza verticalmente */
+  text-align: center;              /* Texto centralizado */
+  padding: 80px 24px;              /* Espaçamento interno */
 }
 
 .home__hero-titulo {
-    font-size: clamp(2rem, 6vw, 3.2rem);
-    font-weight: 800;
-    color: #D7BDA6;
-    line-height: 1.2;
-    margin-bottom: 20px;
+  font-size: clamp(2rem, 6vw, 3.2rem); /* Tamanho responsivo de fonte */
+  font-weight: 800;                /* Peso da fonte bem destacado */
+  color: #D7BDA6;                  /* Cor bege/dourada */
+  line-height: 1.2;                /* Altura da linha reduzida */
+  margin-bottom: 20px;             /* Espaço inferior */
 }
 
 .home__hero-titulo span {
-    color: #AB7743;
+  color: #AB7743;                  /* Cor de destaque para trechos do título */
 }
 
 .home__hero-texto {
-    font-size: 1.05rem;
-    color: #B7957F;
-    line-height: 1.7;
-    max-width: 480px;
-    margin-bottom: 36px;
+  font-size: 1.05rem;               /* Tamanho do texto descritivo */
+  color: #B7957F;                  /* Cor neutra aquecida */
+  line-height: 1.7;                /* Espaçamento entre linhas agradável */
+  max-width: 480px;                /* Limite de largura para legibilidade */
+  margin-bottom: 36px;             /* Espaço inferior */
 }
 
+/* RODAPÉ DA PÁGINA (FOOTER) */
 .home__footer {
-    text-align: center;
-    padding: 24px;
-    border-top: 1px solid rgba(183, 149, 127, 0.12);
-    color: #B7957F;
-    font-size: 0.8rem;
+  text-align: center;              /* Centraliza o texto do rodapé */
+  padding: 24px;                   /* Espaçamento interno */
+  border-top: 1px solid rgba(183, 149, 127, 0.12); /* Borda superior sutil */
+  color: #B7957F;                  /* Cor do texto do rodapé */
+  font-size: 0.8rem;               /* Tamanho de fonte menor */
 }
 
 .home__logo {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #D7BDA6;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
+  font-size: 1.3rem;               /* Tamanho da logo no rodapé */
+  font-weight: 800;                /* Peso da fonte em destaque */
+  color: #D7BDA6;                  /* Cor principal da logo */
+  letter-spacing: 0.1em;           /* Espaçamento estendido entre letras */
+  text-transform: uppercase;       /* Caixa alta */
+  margin-bottom: 6px;              /* Espaço abaixo da logo */
 }
 
 .home__logo span {
-    color: #AB7743;
-}
-
-
-/* Configuração geral */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-}
-
-/* Container principal */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* Menu */
-.menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Imagens responsivas */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Para telas menores que 768px */
-@media (max-width: 768px) {
-    .menu {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .coluna {
-        width: 100%;
-        margin-bottom: 15px;
-    }
-
-    h1 {
-        font-size: 28px;
-    }
-
-    p {
-        font-size: 16px;
-    }
-}
-
-/* Para celulares menores que 480px */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 22px;
-    }
-
-    p {
-        font-size: 14px;
-    }
-
-    button {
-        width: 100%;
-        padding: 12px;
-    }
+  color: #AB7743;                  /* Destaque de cor no detalhe da logo */
 }
