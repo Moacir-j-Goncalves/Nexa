@@ -70,6 +70,7 @@ function Home() {
         </section>
 
           <section className="categories">
+          <section className="categorias">
           <h2>Categorias</h2>
           <div className="carousel-container">
             <button className="carousel-btn left" onClick={() => scrollCarousel(-1)}>◀</button>
