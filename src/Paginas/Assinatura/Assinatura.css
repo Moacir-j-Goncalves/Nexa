@@ -138,7 +138,7 @@
 /* Botões da assinatura */
 .assinatura__rodape .botao {
     width: 100%;
-    max-width: 340px;
+    max-width: 200px;
     padding: 18px 18px;
     font-size: 1.1rem;
     font-weight: 700;
@@ -151,6 +151,7 @@
     border: 2px solid #6b1a22; /* ✅ borda vinho */
 }
 
-.assinatura__rodape .botao:hover {
+.Confirmar .botao:hover {
     background-color:  #6b1a22; /* cor ao passar o mouse */
 }
+

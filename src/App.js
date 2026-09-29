@@ -19,7 +19,11 @@ import Assinatura from './Paginas/Assinatura';
 import Pagamento from './Paginas/Pagamentos';
 import SobreNexa from "./Paginas/SobreNexa";
 
+import "./Componentes/Mobile/Responsivo.css";
+
+
 import { useParams } from 'react-router-dom';
+
 
 function PerfilSalaoWrapper() {
   const { id } = useParams();

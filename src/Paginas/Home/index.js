@@ -69,15 +69,19 @@ function Home() {
           </div>
         </section>
 
-          <section className="categories">
+          <section className="categorias">
           <h2>Categorias</h2>
           <div className="carousel-container">
             <button className="carousel-btn left" onClick={() => scrollCarousel(-1)}>◀</button>
             <div className="carousel" id="carousel">
-              <div className="card" onClick={() => irParaCategoria('saloes')}>💇 Salões de beleza</div>
-              <div className="card" onClick={() => irParaCategoria('manicure')}>💅 Manicure</div>
-              <div className="card" onClick={() => irParaCategoria('estetica')}>💆 Estética</div>
-              <div className="card" onClick={() => irParaCategoria('academia')}>🏋️ Academia</div>
+              <div className="card" onClick={() => irParaCategoria('saloes')}>Salões de beleza</div>
+              <div className="card" onClick={() => irParaCategoria('manicure')}> Manicure e Pedicure</div>
+              <div className="card" onClick={() => irParaCategoria('estetica')}> Nutricionaista</div>
+              <div className="card" onClick={() => irParaCategoria('personal')}> Personal trainer</div>
+              <div className="card" onClick={() => irParaCategoria('fisioterapeuta')}> Fisioterapeuta</div>
+              <div className="card" onClick={() => irParaCategoria('psicologo')}> Psicólogo</div>
+              <div className="card" onClick={() => irParaCategoria('massagista')}> Massagista</div>
+              <div className="card" onClick={() => irParaCategoria('adicionar')}> adicionar</div>
               <div className="card" onClick={() => irParaCategoria('adicionar')}> adicionar</div>
               <div className="card" onClick={() => irParaCategoria('adicionar')}> adicionar</div>
               <div className="card" onClick={() => irParaCategoria('adicionar')}> adicionar</div>
@@ -87,9 +91,9 @@ function Home() {
           </div>
         </section>
 
-        <section className="featured">
-          <h2>Destaques</h2>
-          <div className="featured-grid">
+        <section className="Cards">
+          <h2>Mais avaliados</h2>
+          <div className="Card-grid">
 
           <div className="professional-card" onClick={() => navigate('/perfil-salao/1')}>
   <img src={studioBellaImg} alt="Studio Bella" className="card-img" />
@@ -112,9 +116,7 @@ function Home() {
   <p>⭐ 5.0</p>
   <button onClick={(e) => { e.stopPropagation(); navigate('/perfil-salao/3'); }}>Ver Perfil</button>
 </div>
-
-
-          </div>
+  </div>
         </section>
 
       </main>
