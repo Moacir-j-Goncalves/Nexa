@@ -45,9 +45,10 @@ img {
 
 /* Conteúdo centralizado da Home */
 .home-content {
-  max-width: 1200px;               /* Largura máxima do conteúdo */
-  margin: 0 auto;                  /* Centraliza o conteúdo horizontalmente */
-  padding: 40px;                   /* Espaçamento interno */
+  width: 100%;                 /* Ocupa a largura total até atingir o limite */
+  max-width: 1200px;           /* Limite máximo do conteúdo */
+  margin: 0 auto;              /* Centraliza o conteúdo */
+  padding: 40px 20px;          /* Adiciona um padding de segurança nas laterais */
 }
 
 /* SEÇÃO HERO PRINCIPAL (Boas-vindas e busca) */
@@ -289,3 +290,4 @@ img {
 .home__logo span {
   color: #AB7743;                  /* Destaque de cor no detalhe da logo */
 }
+
