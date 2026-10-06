@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import perfil from '../../Componentes/Imagens/icon-Perfil.svg';
 import './Menu.css';
 
 function Menu() {
@@ -20,8 +21,11 @@ function Menu() {
           <span></span>
         </button>
 
-        {/* Logo */}
-        <span className="menu-logo">NEXA</span>
+        {/* Ícone de Perfil na Navbar */}
+        <div className="menu-perfil-container" onClick={() => navigate('/perfil')}>
+          <img src={perfil} alt="Perfil" className="menu-perfil-icon" />
+          
+        </div>
       </div>
 
       {/* Menu lateral */}

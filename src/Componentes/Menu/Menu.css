@@ -1,4 +1,4 @@
-
+/* Barra superior */
 .menu-barra {
   background-color: rgb(63, 17, 22);
   padding: 14px 24px;
@@ -25,12 +25,40 @@
   background-color: #fdf6f0;
 }
 
-/* Logo */
+/* Logo / Container do Ícone de Perfil */
 .menu-logo {
   color: #fdf6f0;
   font-size: 18px;
   font-family: serif;
   letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+}
+
+/* Ícone de Perfil na Navbar */
+.menu-perfil-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  padding: 4px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.menu-perfil-container:hover {
+  transform: scale(1.08);
+}
+
+.menu-perfil-icon {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  /* Converte as linhas do SVG para a cor clara (#fdf6f0) */
+  filter: brightness(0) invert(1);
+  object-fit: contain;
+  display: block;
 }
 
 /* Menu lateral */
@@ -39,8 +67,8 @@
   top: 100%;
   left: 0;
   background-color: #fdf6f0;
-  width: 220px; /* antes 260px */
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  width: 220px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   border-radius: 0 20px 20px 0;
   overflow: hidden;
   z-index: 999;
@@ -56,13 +84,13 @@
   pointer-events: auto;
 }
 
-/* Botões */
+/* Botões do Menu Lateral */
 .menu-botao {
   display: block;
   width: 100%;
   text-align: left;
-  font-size: 14px; /* menor */
-  padding: 10px 16px; /* mais compacto */
+  font-size: 14px;
+  padding: 10px 16px;
   border: none;
   border-bottom: 1px solid #f0e0d8;
   background-color: transparent;

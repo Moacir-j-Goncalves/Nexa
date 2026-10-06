@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
+  <!-- Círculo Exterior em Vinho Nexa -->
+  <circle cx="12" cy="12" r="10" stroke="#5B0012" stroke-width="1.8" stroke-linecap="round" />
+  
+  <!-- Cabeça em Vinho Nexa -->
+  <circle cx="12" cy="10" r="3" stroke="#5B0012" stroke-width="1.8" stroke-linecap="round" />
+  
+  <!-- Ombros em Vinho Nexa -->
+  <path d="M6.168 18.849A8.002 8.002 0 0 1 12 16a8.002 8.002 0 0 1 5.832 2.849" stroke="#5B0012" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Detalhe/Brilho Estético em Dourado/Bege Nexa -->
+  <path d="M18 5.5L18.5 7L20 7.5L18.5 8L18 9.5L17.5 8L16 7.5L17.5 7L18 5.5Z" fill="#AB7743" />
+</svg>
