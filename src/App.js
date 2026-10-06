@@ -18,11 +18,13 @@ import Centraldeajuda from './Paginas/CentralDeAjuda';
 import Assinatura from './Paginas/Assinatura';
 import Pagamento from './Paginas/Pagamentos';
 import SobreNexa from "./Paginas/SobreNexa";
+import Index from "./Componentes/Perfil/index";
 
 import "./Componentes/Mobile/Responsivo.css";
 
 
 import { useParams } from 'react-router-dom';
+import Perfil from './Componentes/Perfil';
 
 
 function PerfilSalaoWrapper() {
@@ -34,6 +36,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path='/perfil' element={<Index/>} />
         <Route path="/area-do-cliente" element={<AreaDoCliente />} />
         <Route path="/editar-perfil" element={<EditarPerfil />} />
         <Route path="/meus-agendamentos" element={<MeusAgendamentos />} />

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import fundo from '../Imagens/nexa_fundo.jpg'; // Imagem usada como fundo
 import './Perfil.css';
 
 function Perfil() {
@@ -18,14 +19,12 @@ function Perfil() {
       return;
     }
 
-    // Validação simples de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(dados.email)) {
       alert('Digite um email válido!');
       return;
     }
 
-    // Validação simples de telefone
     const telefoneRegex = /^\(\d{2}\)\s?\d{5}-\d{4}$/;
     if (!telefoneRegex.test(dados.telefone)) {
       alert('Digite um telefone válido no formato (00) 00000-0000!');
@@ -33,11 +32,20 @@ function Perfil() {
     }
 
     alert('Dados salvos com sucesso!');
-    // Aqui você pode integrar com uma API ou salvar em localStorage
   }
 
   return (
-    <div className="perfil-container">
+    <div 
+      className="perfil-container"
+      style={{
+        backgroundImage: `url(${fundo})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '100vh',
+        width: '100%'
+      }}
+    >
       <div className="perfil-card">
 
         <div className="perfil-header">
