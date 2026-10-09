@@ -133,8 +133,8 @@ img {
 }
 
 .card {
-  flex: 0 0 220px;
-  height: 100px;
+  flex: 0 0 180px;
+  height: 140px;
   background: #fdf6f0;
   border-radius: 12px;
   font-size: 16px;
@@ -173,11 +173,11 @@ img {
 }
 
 .carousel-btn.left {
-  left: -20px; /* Ajustado para não extrapolar limites da tela */
+  left: -80px; /* Ajustado para não extrapolar limites da tela */
 }
 
 .carousel-btn.right {
-  right: -20px;
+  right: -80px;
 }
 
 .carousel-btn:hover {
