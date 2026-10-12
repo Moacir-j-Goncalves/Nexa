@@ -154,6 +154,640 @@ img {
   transform: scale(1.05);
 }
 
+/* ========================================
+   NEXA — PÁGINA INICIAL
+======================================== */
+
+.home {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: clip;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #50151f;
+}
+
+.home-content {
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: 0 32px 48px;
+}
+
+/* ========================================
+   BANNER PRINCIPAL
+======================================== */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 72px 20px 64px;
+  color: #fff8f2;
+}
+
+.Logo {
+  margin: 0 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.Logo img {
+  display: block;
+  width: min(270px, 70vw);
+  max-height: 130px;
+  object-fit: contain;
+}
+
+.hero > p {
+  max-width: 600px;
+  margin: 0 0 28px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   BUSCA
+======================================== */
+
+.search-box {
+  display: flex;
+  width: min(650px, 100%);
+  min-height: 54px;
+  overflow: hidden;
+  background: #fffaf6;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(42, 8, 15, 0.12);
+}
+
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  padding: 0 18px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #351016;
+  font-size: 15px;
+}
+
+.search-box input::placeholder {
+  color: #8c7776;
+}
+
+.search-box button {
+  padding: 0 28px;
+  border: none;
+  background: #8a1734;
+  color: #fff8f2;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.search-box button:hover {
+  background: #6e1028;
+}
+
+/* ========================================
+   TÍTULOS DAS SEÇÕES
+======================================== */
+
+.categorias,
+.Cards {
+  width: 100%;
+  margin-bottom: 48px;
+}
+
+.secao-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.secao-titulo h2 {
+  margin: 0;
+  color: #fff8f2;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.secao-titulo p {
+  margin: 7px 0 0;
+  color: rgba(255, 248, 242, 0.85);
+  font-size: 14px;
+}
+
+.ver-todos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border: none;
+  background: transparent;
+  color: #fff8f2;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ver-todos:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   CARROSSEL DE CATEGORIAS
+======================================== */
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+  width: 100%;
+  padding: 4px 2px 18px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card individual */
+
+.categorias .card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  flex: 0 0 210px;
+  height: 190px;
+  padding: 18px;
+
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+
+  background: #6e2633;
+  box-shadow: 0 6px 20px rgba(42, 8, 15, 0.15);
+
+  text-align: left;
+  cursor: pointer;
+  scroll-snap-align: start;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Imagem */
+
+.categoria-img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform 0.4s ease;
+}
+
+/* Degradê para facilitar a leitura */
+
+.categorias .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: linear-gradient(
+    to top,
+    rgba(45, 7, 17, 0.88) 0%,
+    rgba(45, 7, 17, 0.38) 42%,
+    rgba(45, 7, 17, 0.02) 100%
+  );
+}
+
+/* Nome da categoria */
+
+.categoria-nome {
+  position: relative;
+  z-index: 1;
+
+  max-width: calc(100% - 24px);
+  color: #fff8f2;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 700;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Seta no canto */
+
+.categoria-seta {
+  position: absolute;
+  z-index: 1;
+  right: 12px;
+  bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+  background: #8a1734;
+  color: #fff8f2;
+  font-size: 18px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Categoria sem imagem */
+
+.categoria-sem-imagem {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(circle at 70% 25%, #a65d6b, transparent 45%),
+    linear-gradient(135deg, #7b263a, #3e101b);
+}
+
+.categoria-sem-imagem span {
+  color: rgba(255, 248, 242, 0.3);
+  font-size: 80px;
+}
+
+/* Interações */
+
+.categorias .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(42, 8, 15, 0.25);
+}
+
+.categorias .card:hover .categoria-img {
+  transform: scale(1.07);
+}
+
+.categorias .card:hover .categoria-seta {
+  background: #a32344;
+  transform: translateX(3px);
+}
+
+.categorias .card:focus-visible {
+  outline: 3px solid #e8c5b5;
+  outline-offset: 3px;
+}
+
+/* Botões do carrossel */
+
+.carousel-btn {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  transform: translateY(-65%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+
+  background: #8a1734;
+  color: #fff8f2;
+  font-size: 27px;
+
+  box-shadow: 0 4px 12px rgba(42, 8, 15, 0.2);
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background: #6e1028;
+  transform: translateY(-65%) scale(1.06);
+}
+
+.carousel-btn.left {
+  left: -18px;
+}
+
+.carousel-btn.right {
+  right: -18px;
+}
+
+/* ========================================
+   PROFISSIONAIS MAIS AVALIADOS
+======================================== */
+
+.Card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.professional-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+
+  background: #fff7f0;
+  color: #50151f;
+
+  box-shadow: 0 8px 24px rgba(42, 8, 15, 0.12);
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.professional-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(42, 8, 15, 0.18);
+}
+
+.card-img {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.professional-info {
+  padding: 18px;
+}
+
+.professional-info h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.avaliacao {
+  margin: 0 0 16px;
+  color: #68434a;
+  font-size: 14px;
+}
+
+.avaliacao span {
+  color: #b77924;
+}
+
+.professional-info button {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #8a1734;
+  color: #fff8f2;
+
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.professional-info button:hover {
+  background: #6e1028;
+}
+
+/* ========================================
+   TABLETS
+======================================== */
+
+@media (max-width: 900px) {
+  .home-content {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .hero {
+    padding-top: 60px;
+    padding-bottom: 52px;
+  }
+
+  .Card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .card-img {
+    height: 190px;
+  }
+}
+
+/* ========================================
+   CELULARES
+======================================== */
+
+@media (max-width: 600px) {
+  .home {
+    background-attachment: scroll;
+    background-position: center top;
+  }
+
+  .home-content {
+    padding: 0 16px 32px;
+  }
+
+  .hero {
+    padding: 42px 0 40px;
+  }
+
+  .Logo {
+    margin-bottom: 14px;
+  }
+
+  .Logo img {
+    width: min(210px, 65vw);
+    max-height: 100px;
+  }
+
+  .hero > p {
+    max-width: 340px;
+    margin-bottom: 22px;
+    font-size: 15px;
+  }
+
+  .search-box {
+    min-height: 48px;
+    border-radius: 12px;
+  }
+
+  .search-box input {
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .search-box button {
+    padding: 0 16px;
+    font-size: 13px;
+  }
+
+  .categorias,
+  .Cards {
+    margin-bottom: 34px;
+  }
+
+  .secao-titulo {
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+
+  .secao-titulo h2 {
+    font-size: 21px;
+  }
+
+  .secao-titulo p {
+    max-width: 260px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .ver-todos {
+    padding-top: 5px;
+    font-size: 12px;
+  }
+
+  .carousel {
+    gap: 12px;
+    padding-bottom: 14px;
+  }
+
+  .categorias .card {
+    flex-basis: 155px;
+    height: 150px;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .categoria-nome {
+    max-width: calc(100% - 16px);
+    font-size: 13px;
+  }
+
+  .categoria-seta {
+    right: 8px;
+    bottom: 8px;
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
+  }
+
+  .carousel-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 23px;
+  }
+
+  .carousel-btn.left {
+    left: -9px;
+  }
+
+  .carousel-btn.right {
+    right: -9px;
+  }
+
+  .Card-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .professional-card {
+    border-radius: 16px;
+  }
+
+  .card-img {
+    height: 210px;
+  }
+
+  .professional-info {
+    padding: 15px;
+  }
+}
+
+/* ========================================
+   CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 360px) {
+  .home-content {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .categorias .card {
+    flex-basis: 140px;
+    height: 135px;
+  }
+
+  .categoria-nome {
+    font-size: 12px;
+  }
+
+  .secao-titulo h2 {
+    font-size: 19px;
+  }
+
+  .search-box button {
+    padding: 0 12px;
+  }
+}
+
+/* Respeitar a preferência por movimento reduzido */
+
+@media (prefers-reduced-motion: reduce) {
+  .categorias .card,
+  .categoria-img,
+  .categoria-seta,
+  .carousel-btn,
+  .professional-card {
+    transition: none;
+  }
+}
+
 /* BOTÕES DE NAVEGAÇÃO DO CARROSSEL */
 .carousel-btn {
   position: absolute;

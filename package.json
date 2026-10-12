@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@tabler/icons-react": "^3.44.0",
+    "lucide-react": "^1.55.0",
     "react": "^19.2.5",
     "react-calendar": "^6.0.1",
     "react-dom": "^19.2.5",
@@ -11,11 +12,9 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-"scripts": {
-  "start": "react-scripts start"
-}
-
-,
+  "scripts": {
+    "start": "react-scripts start"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -35,4 +34,3 @@
     ]
   }
 }
-

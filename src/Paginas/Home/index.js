@@ -1,101 +1,320 @@
+
 import { useNavigate } from 'react-router-dom';
-import Menu from "../../Componentes/Menu";
-import fundo from "../../Componentes/Imagens/nexa_fundo.jpg";
-import logoImg from '../../Componentes/Imagens/NEXA_nome.png'; // 1. Importação da imagem da logo
+import Menu from '../../Componentes/Menu';
+
+import fundo from '../../Componentes/Imagens/nexa_fundo.jpg';
+import logoImg from '../../Componentes/Imagens/NEXA_nome.png';
+
+// Imagens das categorias
+import barbeariaImg from '../../Componentes/Imagens/Cards/Barbearia_nexa.png';
+import saloesImg from '../../Componentes/Imagens/Cards/Salões_nexa.png';
+import manicureImg from '../../Componentes/Imagens/Cards/Manicure_nexa.png';
+import nutricionistaImg from '../../Componentes/Imagens/Cards/Nutricionista_nexa.png';
+import personalImg from '../../Componentes/Imagens/Cards/Personal_nexa.png';
+import fisioterapeutaImg from '../../Componentes/Imagens/Cards/Fisioterapeuta_nexa.png';
+import psicologoImg from '../../Componentes/Imagens/Cards/Psicologo_nexa.png';
+
+// Imagens dos profissionais
 import studioBellaImg from '../../Componentes/Imagens/Studiobella.jpg';
 import espacoGlamourImg from '../../Componentes/Imagens/EspacoGlamour.jpg';
 import beautyCenterImg from '../../Componentes/Imagens/BeautyCenter.jpg';
 
-import "./Home.css";
+import './Home.css';
 
 function Home() {
   const navigate = useNavigate();
 
+  // Categorias exibidas no carrossel
+  // Barbearias aparece antes de Salões de beleza
+  const categorias = [
+    {
+      nome: 'Barbearias',
+      filtro: 'barbearia',
+      imagem: barbeariaImg,
+    },
+    {
+      nome: 'Salões de beleza',
+      filtro: 'saloes',
+      imagem: saloesImg,
+    },
+    {
+      nome: 'Manicure e Pedicure',
+      filtro: 'manicure',
+      imagem: manicureImg,
+    },
+    {
+      nome: 'Nutricionista',
+      filtro: 'nutricionista',
+      imagem: nutricionistaImg,
+    },
+    {
+      nome: 'Personal trainer',
+      filtro: 'personal',
+      imagem: personalImg,
+    },
+    {
+      nome: 'Fisioterapeuta',
+      filtro: 'fisioterapeuta',
+      imagem: fisioterapeutaImg,
+    },
+    {
+      nome: 'Psicólogo',
+      filtro: 'psicologo',
+      imagem: psicologoImg,
+    },
+    {
+      nome: 'Massagista',
+      filtro: 'massagista',
+      imagem: null,
+    },
+  ];
+
+  // Profissionais mais avaliados
+  const profissionais = [
+    {
+      nome: 'Studio Bella',
+      avaliacao: '4.9',
+      imagem: studioBellaImg,
+      rota: '/perfil-salao/1',
+    },
+    {
+      nome: 'Espaço Glamour',
+      avaliacao: '4.8',
+      imagem: espacoGlamourImg,
+      rota: '/perfil-salao/2',
+    },
+    {
+      nome: 'Beauty Center',
+      avaliacao: '5.0',
+      imagem: beautyCenterImg,
+      rota: '/perfil-salao/3',
+    },
+  ];
+
+  // Direciona para a busca da categoria selecionada
   function irParaCategoria(categoria) {
-    navigate('/buscar?categoria=' + categoria);
+    navigate(
+      `/buscar?categoria=${encodeURIComponent(categoria)}`
+    );
   }
 
+  // Navegação do carrossel
   function scrollCarousel(direction) {
-    const carousel = document.getElementById("carousel");
-    const scrollAmount = 250;
+    const carousel = document.getElementById('carousel');
+
+    if (!carousel) return;
+
+    const primeiroCard = carousel.querySelector('.card');
+
+    const distancia = primeiroCard
+      ? primeiroCard.getBoundingClientRect().width + 18
+      : 250;
 
     if (direction === 1) {
-      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
-        carousel.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
-      }
+      const chegouAoFim =
+        carousel.scrollLeft + carousel.clientWidth >=
+        carousel.scrollWidth - 5;
+
+      carousel.scrollTo({
+        left: chegouAoFim
+          ? 0
+          : carousel.scrollLeft + distancia,
+        behavior: 'smooth',
+      });
     } else {
-      if (carousel.scrollLeft === 0) {
-        carousel.scrollTo({ left: carousel.scrollWidth, behavior: "smooth" });
-      } else {
-        carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-      }
+      const chegouAoInicio = carousel.scrollLeft <= 5;
+
+      carousel.scrollTo({
+        left: chegouAoInicio
+          ? carousel.scrollWidth
+          : carousel.scrollLeft - distancia,
+        behavior: 'smooth',
+      });
     }
   }
 
   return (
-    <div className="home" style={{ backgroundImage: `url(${fundo})` }}>
+    <div
+      className="home"
+      style={{ backgroundImage: `url(${fundo})` }}
+    >
+      {/* Menu principal */}
       <Menu />
+
       <main className="home-content">
-
+        {/* Banner principal */}
         <section className="hero">
-          {/* 2. Uso do import na tag img */}
-          <h1 className='Logo'>
-            <img src={logoImg} alt='Nexa-logo' />
+          <h1 className="Logo">
+            <img src={logoImg} alt="NEXA" />
           </h1>
-          <p>Conectando clientes aos melhores profissionais da sua região.</p>
-          <div className="search-box">
-            <input type="text" placeholder="Buscar serviço..." />
-            <button>Buscar</button>
-          </div>
+
+          <p>
+            Conectando clientes aos melhores profissionais da sua região.
+          </p>
+
+          {/* Campo de busca */}
+          <form
+            className="search-box"
+            onSubmit={(e) => {
+              e.preventDefault();
+
+              const campo = e.currentTarget.elements.busca;
+              const termo = campo.value.trim();
+
+              navigate(
+                termo
+                  ? `/buscar?termo=${encodeURIComponent(termo)}`
+                  : '/buscar'
+              );
+            }}
+          >
+            <input
+              type="search"
+              name="busca"
+              placeholder="Buscar serviço..."
+              aria-label="Buscar serviço"
+            />
+
+            <button type="submit">
+              Buscar
+            </button>
+          </form>
         </section>
 
+        {/* Categorias com imagens */}
         <section className="categorias">
-          <h2>Categorias</h2>
+          <div className="secao-titulo">
+            <div>
+              <h2>Categorias</h2>
+              <p>
+                Encontre o serviço ideal para você.
+              </p>
+            </div>
+
+            <button
+              className="ver-todos"
+              onClick={() => navigate('/buscar')}
+              type="button"
+            >
+              Ver todas <span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          {/* Carrossel de categorias */}
           <div className="carousel-container">
-            <button className="carousel-btn left" onClick={() => scrollCarousel(-1)}>◀</button>
+            <button
+              className="carousel-btn left"
+              onClick={() => scrollCarousel(-1)}
+              aria-label="Categorias anteriores"
+              type="button"
+            >
+              ‹
+            </button>
+
             <div className="carousel" id="carousel">
-              <div className="card" onClick={() => irParaCategoria('saloes')}>Salões de beleza</div>
-              <div className="card" onClick={() => irParaCategoria('manicure')}>Manicure e Pedicure</div>
-              <div className="card" onClick={() => irParaCategoria('estetica')}>Nutricionista</div>
-              <div className="card" onClick={() => irParaCategoria('personal')}>Personal trainer</div>
-              <div className="card" onClick={() => irParaCategoria('fisioterapeuta')}>Fisioterapeuta</div>
-              <div className="card" onClick={() => irParaCategoria('psicologo')}>Psicólogo</div>
-              <div className="card" onClick={() => irParaCategoria('massagista')}>Massagista</div>
+              {categorias.map((categoria) => (
+                <button
+                  key={categoria.filtro}
+                  className="card"
+                  onClick={() =>
+                    irParaCategoria(categoria.filtro)
+                  }
+                  type="button"
+                >
+                  {categoria.imagem ? (
+                    <img
+                      src={categoria.imagem}
+                      alt=""
+                      className="categoria-img"
+                    />
+                  ) : (
+                    <div className="categoria-sem-imagem">
+                      <span aria-hidden="true">✦</span>
+                    </div>
+                  )}
+
+                  <span className="categoria-nome">
+                    {categoria.nome}
+                  </span>
+
+                  <span
+                    className="categoria-seta"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </button>
+              ))}
             </div>
-            <button className="carousel-btn right" onClick={() => scrollCarousel(1)}>▶</button>
+
+            <button
+              className="carousel-btn right"
+              onClick={() => scrollCarousel(1)}
+              aria-label="Próximas categorias"
+              type="button"
+            >
+              ›
+            </button>
           </div>
         </section>
 
+        {/* Profissionais mais avaliados */}
         <section className="Cards">
-          <h2>Mais avaliados</h2>
+          <div className="secao-titulo">
+            <div>
+              <h2>Mais avaliados</h2>
+              <p>
+                Conheça alguns dos profissionais em destaque.
+              </p>
+            </div>
+          </div>
+
           <div className="Card-grid">
+            {profissionais.map((profissional) => (
+              <article
+                className="professional-card"
+                key={profissional.nome}
+                onClick={() => navigate(profissional.rota)}
+                tabIndex={0}
+                role="link"
+                onKeyDown={(e) => {
+                  if (
+                    e.key === 'Enter' ||
+                    e.key === ' '
+                  ) {
+                    e.preventDefault();
+                    navigate(profissional.rota);
+                  }
+                }}
+              >
+                <img
+                  src={profissional.imagem}
+                  alt={profissional.nome}
+                  className="card-img"
+                />
 
-            <div className="professional-card" onClick={() => navigate('/perfil-salao/1')}>
-              <img src={studioBellaImg} alt="Studio Bella" className="card-img" />
-              <h3>Studio Bella</h3>
-              <p>⭐ 4.9</p>
-              <button onClick={(e) => { e.stopPropagation(); navigate('/perfil-salao/1'); }}>Ver Perfil</button>
-            </div>
+                <div className="professional-info">
+                  <h3>{profissional.nome}</h3>
 
-            <div className="professional-card" onClick={() => navigate('/perfil-salao/2')}>
-              <img src={espacoGlamourImg} alt="Espaço Glamour" className="card-img" />
-              <h3>Espaço Glamour</h3>
-              <p>⭐ 4.8</p>
-              <button onClick={(e) => { e.stopPropagation(); navigate('/perfil-salao/2'); }}>Ver Perfil</button>
-            </div>
+                  <p className="avaliacao">
+                    <span aria-hidden="true">★</span>{' '}
+                    {profissional.avaliacao}
+                  </p>
 
-            <div className="professional-card" onClick={() => navigate('/perfil-salao/3')}>
-              <img src={beautyCenterImg} alt="Beauty Center" className="card-img" />
-              <h3>Beauty Center</h3>
-              <p>⭐ 5.0</p>
-              <button onClick={(e) => { e.stopPropagation(); navigate('/perfil-salao/3'); }}>Ver Perfil</button>
-            </div>
-
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(profissional.rota);
+                    }}
+                  >
+                    Ver perfil
+                  </button>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
-
       </main>
     </div>
   );

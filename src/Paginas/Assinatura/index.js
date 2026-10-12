@@ -99,14 +99,24 @@ export default function Assinatura() {
         
 
               <div className="assinatura__rodape">
-          <Botao
-            destino={`/pagamento?plano=${planoSelecionado}`}
-            variante="primario"
-            tamanho="grande"
-            className="botao--confirmar"
-          >
-            Confirmar plano
-          </Botao>
+          <div className="assinatura__rodape">
+  <p className="assinatura__nota">
+    Cancele quando quiser · Sem fidelidade
+  </p>
+
+
+{/* Botão para confirmar o plano e ir para o pagamento */}
+<button
+  type="button"
+  className="assinatura__botao-confirmar"
+  onClick={() =>
+    navigate(`/pagamento?plano=${planoSelecionado}`)
+  }
+>
+  Confirmar plano
+</button>
+  
+</div>
 
           <p className="assinatura__nota">
             Cancele quando quiser · Sem fidelidade

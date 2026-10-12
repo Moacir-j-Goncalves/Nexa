@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import fundo from '../Imagens/nexa_fundo.jpg'; // Imagem usada como fundo
 import './Perfil.css';
+import Menu from '../Menu/index'; // Componente de menu
 
 function Perfil() {
   const [dados, setDados] = useState({

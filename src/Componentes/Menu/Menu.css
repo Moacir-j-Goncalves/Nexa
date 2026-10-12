@@ -1,110 +1,528 @@
-/* Barra superior */
+
+/* =========================================================
+   1. CONFIGURAÇÃO GERAL DA NAVBAR
+   Define a aparência e o posicionamento da barra superior.
+   ========================================================= */
+
+.menu-container {
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+}
+
 .menu-barra {
-  background-color: rgb(63, 17, 22);
-  padding: 14px 24px;
+  position: relative;
+  z-index: 1002;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  width: 100%;
+  padding: 14px 24px;
+  box-sizing: border-box;
+
+  background-color: rgb(63, 17, 22);
 }
 
-/* Botão hamburguer */
+
+/* =========================================================
+   2. BOTÃO HAMBÚRGUER
+   Controla o botão responsável por abrir e fechar o menu.
+   ========================================================= */
+
 .menu-hamburguer {
-  background: none;
-  border: none;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
+
+  width: 42px;
+  height: 42px;
   padding: 4px;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
+/* Aparência das três linhas do botão hambúrguer */
 .menu-hamburguer span {
   display: block;
   width: 24px;
   height: 2px;
+
   background-color: #fdf6f0;
+  border-radius: 2px;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
-/* Logo / Container do Ícone de Perfil */
+/* Efeito visual ao passar o mouse pelo botão */
+.menu-hamburguer:hover span {
+  background-color: #e8c5b5;
+}
+
+/* Opcional: transforma as linhas em um X quando ativo */
+.menu-hamburguer.ativo span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-hamburguer.ativo span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-hamburguer.ativo span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   3. LOGO NEXA
+   Define o tamanho e o alinhamento da imagem da marca.
+   ========================================================= */
+
 .menu-logo {
-  color: #fdf6f0;
-  font-size: 18px;
-  font-family: serif;
-  letter-spacing: 2px;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+
+  color: #fdf6f0;
+  font-family: serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
-/* Ícone de Perfil na Navbar */
+/* Controla as dimensões da imagem da logo */
+.menu-logo img {
+  display: block;
+  width: 112px;
+  max-height: 54px;
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   4. NAVEGAÇÃO PRINCIPAL DESKTOP
+   Organiza os links Início, Categorias, Sobre e Contato.
+   ========================================================= */
+
+.menu-navegacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Estilo padrão dos links da navbar */
+.menu-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 12px 0;
+  border: none;
+  background: transparent;
+
+  color: #fff8f2;
+  font-size: 14px;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
+}
+
+/* Ajusta o tamanho dos ícones da navegação */
+.menu-link svg {
+  flex-shrink: 0;
+}
+
+/* Destaca o link quando o mouse passa sobre ele */
+.menu-link:hover {
+  color: #e8c5b5;
+}
+
+/* Destaca a página atualmente selecionada */
+.menu-link.selecionado {
+  color: #e8c5b5;
+}
+
+/* Linha inferior do link selecionado */
+.menu-link.selecionado::after {
+  content: '';
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 3px;
+
+  height: 2px;
+  background-color: #fff8f2;
+  border-radius: 3px;
+}
+
+
+/* =========================================================
+   5. BOTÃO DE PERFIL
+   Posiciona e estiliza o ícone de acesso ao perfil.
+   ========================================================= */
+
 .menu-perfil-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  background: transparent;
+
+  width: 40px;
+  height: 40px;
   padding: 4px;
+
+  background: transparent;
+  border: none;
   border-radius: 50%;
+
+  cursor: pointer;
+  flex-shrink: 0;
+
   transition: transform 0.2s ease;
 }
 
+/* Efeito ao passar o mouse sobre o perfil */
 .menu-perfil-container:hover {
   transform: scale(1.08);
 }
 
+/* Define o tamanho e a cor do ícone SVG */
 .menu-perfil-icon {
+  display: block;
   width: 32px;
   height: 32px;
+
   background: transparent;
-  /* Converte as linhas do SVG para a cor clara (#fdf6f0) */
-  filter: brightness(0) invert(1);
   object-fit: contain;
-  display: block;
+
+  /* Converte o SVG para branco */
+  filter: brightness(0) invert(1);
 }
 
-/* Menu lateral */
-.menu-lateral {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fdf6f0;
-  width: 220px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  border-radius: 0 20px 20px 0;
-  overflow: hidden;
-  z-index: 999;
-  transition: all 0.35s ease;
+
+/* =========================================================
+   6. FUNDO ESCURO DO MENU LATERAL
+   Escurece a página enquanto o menu estiver aberto.
+   ========================================================= */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+
+  background-color: rgba(0, 0, 0, 0.45);
+
   opacity: 0;
-  transform: translateX(-40px);
+  visibility: hidden;
   pointer-events: none;
+
+  z-index: 999;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 }
 
-.menu-lateral.aberto {
+/* Torna o fundo escuro visível */
+.menu-overlay.visivel {
   opacity: 1;
-  transform: translateX(0);
+  visibility: visible;
   pointer-events: auto;
 }
 
-/* Botões do Menu Lateral */
-.menu-botao {
-  display: block;
-  width: 100%;
-  text-align: left;
-  font-size: 14px;
-  padding: 10px 16px;
-  border: none;
-  border-bottom: 1px solid #f0e0d8;
-  background-color: transparent;
-  color: #3d0c0c;
-  cursor: pointer;
-  font-family: sans-serif;
-  letter-spacing: 1px;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  transition: all 0.3s ease;
+
+/* =========================================================
+   7. MENU LATERAL
+   Abre pela esquerda, imediatamente abaixo da navbar.
+   Não utiliza position: fixed para o painel lateral.
+   ========================================================= */
+
+.menu-lateral {
+  position: absolute;
+
+  /* Alinha o início do menu à parte inferior da navbar */
+  top: 100%;
+  left: 0;
+
+  width: 250px;
+  max-width: 85vw;
+
+  /* Evita que o menu ultrapasse a altura disponível */
+  max-height: calc(100vh - 64px);
+  max-height: calc(100dvh - 64px);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background-color: #fdf6f0;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 20px 0;
+
+  /* Mantém o painel acima do conteúdo da página */
+  z-index: 1001;
+
+  /* Estado inicial: menu escondido à esquerda */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-100%);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
 }
 
+/* Estado aberto: menu visível na lateral esquerda */
+.menu-lateral.aberto {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+
+/* =========================================================
+   8. CABEÇALHO DO MENU LATERAL
+   Organiza a logo e o botão de fechar.
+   ========================================================= */
+
+.menu-lateral-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 16px;
+  border-bottom: 1px solid #f0e0d8;
+}
+
+/* Logo exibida dentro do menu lateral */
+.menu-lateral-titulo img {
+  display: block;
+  width: 100px;
+  max-height: 45px;
+  object-fit: contain;
+}
+
+/* Botão X para fechar o menu */
+.menu-fechar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+
+  color: #3d0c0c;
+  font-size: 28px;
+  line-height: 1;
+
+  cursor: pointer;
+  flex-shrink: 0;
+
+  transition: background-color 0.2s ease;
+}
+
+/* Destaca o botão de fechar */
+.menu-fechar:hover {
+  background-color: #f0e0d8;
+}
+
+
+/* =========================================================
+   9. BOTÕES DO MENU LATERAL
+   Estiliza os links Home, Login, Agendamento e outros.
+   ========================================================= */
+
+.menu-botao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  width: 100%;
+  padding: 13px 16px;
+  box-sizing: border-box;
+
+  text-align: left;
+  font-family: sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+
+  color: #3d0c0c;
+  background-color: transparent;
+
+  border: none;
+  border-bottom: 1px solid #f0e0d8;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    padding 0.2s ease;
+}
+
+/* Destaca o botão quando o mouse passa sobre ele */
 .menu-botao:hover {
   background-color: #f0e0d8;
-  transform: translateX(10px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  padding-left: 22px;
+}
+
+/* Mantém os textos dos botões legíveis */
+.menu-botao span:first-child {
+  flex: 1;
+}
+
+
+/* =========================================================
+   10. TABLETS E CELULARES
+   Centraliza a logo e mantém os botões nas extremidades.
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Ajusta a altura da barra superior */
+  .menu-barra {
+    height: 64px;
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  /* Esconde a navegação horizontal no celular */
+  .menu-navegacao {
+    display: none;
+  }
+
+  /* Posiciona o hambúrguer no canto esquerdo */
+  .menu-hamburguer {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+
+    width: 42px;
+    height: 42px;
+
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  /* Mantém a logo centralizada */
+  .menu-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+  }
+
+  /* Reduz a logo em telas menores */
+  .menu-logo img {
+    width: 94px;
+    max-height: 44px;
+  }
+
+  /* Mantém o perfil no canto direito */
+  .menu-perfil-container {
+    width: 38px;
+    height: 38px;
+    margin-left: auto;
+    z-index: 2;
+  }
+
+  /* Reduz o ícone de perfil no celular */
+  .menu-perfil-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Limita o menu lateral à altura disponível */
+  .menu-lateral {
+    max-height: calc(100vh - 64px);
+    max-height: calc(100dvh - 64px);
+  }
+}
+
+
+/* =========================================================
+   11. CELULARES PEQUENOS
+   Ajusta as dimensões para telas com até 360px.
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  /* Reduz o espaçamento lateral da navbar */
+  .menu-barra {
+    padding: 0 10px;
+  }
+
+  /* Aproxima o hambúrguer da borda esquerda */
+  .menu-hamburguer {
+    left: 10px;
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Reduz a logo centralizada */
+  .menu-logo img {
+    width: 82px;
+  }
+
+  /* Reduz a largura do painel lateral */
+  .menu-lateral {
+    width: 230px;
+    max-width: 85vw;
+  }
+
+  /* Compacta os botões para telas estreitas */
+  .menu-botao {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   12. ACESSIBILIDADE
+   Reduz animações para usuários que preferem menos movimento.
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .menu-hamburguer span,
+  .menu-overlay,
+  .menu-lateral,
+  .menu-botao,
+  .menu-fechar,
+  .menu-perfil-container {
+    transition: none;
+  }
 }
