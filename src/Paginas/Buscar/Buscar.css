@@ -1,12 +1,31 @@
+
+/* PÁGINA PRINCIPAL */
+.buscar-page {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding: 140px 24px 40px;
+}
+
+/* CONTAINER DA BUSCA */
 .buscar-container {
   width: 100%;
-  height: 100vh;
-
+  min-height: auto;
+  box-sizing: border-box;
   position: relative;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   background-size: cover;
   background-position: center;
@@ -14,73 +33,163 @@
   padding: 0;
 }
 
-
-.buscar-page {
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-}
-
+/* CAIXA DE BUSCA */
 .buscar-box {
-  background: #f3eeee;
-  border-radius: 22px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  padding: 30px;
   width: 100%;
   max-width: 600px;
+  min-width: 0;
+  box-sizing: border-box;
+
+  background: #f3eeee;
+  border-radius: 22px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  padding: 30px;
 }
 
-.buscar-secao-titulo {
-  font-size: 15px;
-  font-weight: 600;
-  color: #6b1a22;
-  margin-bottom: 12px;
-}
-
-.buscar-search-bar {
-  background-color:transparent;
-  border-radius: 12px;
-  border: 0.5px solid transparent;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  margin-bottom: 20px;
-}
-
-.buscar-search-bar input {
-  border: none;
-  outline: none;
-  background: transparent;
-  font-size: 14px;
-  color: #333;
-  font-family: 'DM Sans', sans-serif;
-  width: 100%;
-}
-
-.buscar-search-bar input::placeholder {
-  color: #aaa;
-}
-
-.buscar-secao {
-  margin-bottom: 20px;
-}
-
+/* TÍTULOS DAS SEÇÕES */
 .buscar-secao-titulo {
   font-size: 15px;
   font-weight: 600;
   color: #3d0c0c;
-  margin-bottom: 12px;
+  margin: 0 0 12px;
 }
 
+/* BARRA DE PESQUISA */
+.buscar-search-bar {
+  width: 100%;
+  box-sizing: border-box;
+
+  background-color: rgba(255, 255, 255, 0.65);
+  border-radius: 12px;
+  border: 1px solid #e8d5cc;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+
+.buscar-search-bar input {
+  flex: 1;
+  min-width: 0;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  font-size: 14px;
+  color: #333;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.buscar-search-bar input::placeholder {
+  color: #999;
+}
+
+.buscar-search-bar:focus-within {
+  border-color: #6b1a1a;
+  box-shadow: 0 0 0 3px rgba(107, 26, 26, 0.08);
+}
+
+/* SEÇÕES */
+.buscar-secao {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* MENSAGEM SEM RESULTADOS */
 .buscar-sem-resultado {
   text-align: center;
-  color: #aaa;
+  color: #999;
   font-size: 14px;
-  margin-top: 40px;
+  line-height: 1.5;
+  margin-top: 30px;
+}
+
+/* TABLETS */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .buscar-page {
+    padding: 160px 32px 40px;
+  }
+
+  .buscar-box {
+    max-width: 680px;
+    padding: 32px;
+    border-radius: 22px;
+  }
+
+  .buscar-secao-titulo {
+    font-size: 16px;
+  }
+
+  .buscar-search-bar {
+    padding: 14px 16px;
+  }
+
+  .buscar-search-bar input {
+    font-size: 15px;
+  }
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+  .buscar-page {
+    min-height: 100vh;
+    padding: 120px 16px 28px;
+    align-items: flex-start;
+  }
+
+  .buscar-container {
+    width: 100%;
+  }
+
+  .buscar-box {
+    width: 100%;
+    max-width: 100%;
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .buscar-secao-titulo {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .buscar-search-bar {
+    padding: 12px;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .buscar-search-bar input {
+    font-size: 14px;
+  }
+
+  .buscar-secao {
+    margin-bottom: 18px;
+  }
+
+  .buscar-sem-resultado {
+    font-size: 13px;
+    margin-top: 24px;
+  }
+}
+
+/* CELULARES PEQUENOS */
+@media (max-width: 380px) {
+  .buscar-page {
+    padding: 110px 10px 24px;
+  }
+
+  .buscar-box {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .buscar-search-bar {
+    padding: 10px;
+  }
 }

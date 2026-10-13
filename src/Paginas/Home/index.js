@@ -67,6 +67,11 @@ function Home() {
       filtro: 'massagista',
       imagem: null,
     },
+     {
+      nome: 'Adicionar',
+      filtro: '',
+      imagem: null,
+    },
   ];
 
   // Profissionais mais avaliados
