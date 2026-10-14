@@ -131,3 +131,68 @@
 .perfil-btn:hover {
   background-color: #5e1515;
 }
+
+
+/* Campo de especialidade */
+.perfil-campo select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 15px;
+  border: 1px solid #ded5d9;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.perfil-campo select:focus {
+  border-color: #8b5cf6;
+}
+
+/* Organização dos campos de endereço */
+.perfil-endereco {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.perfil-endereco-linha {
+  display: flex;
+  gap: 12px;
+}
+
+.perfil-endereco-linha input {
+  min-width: 0;
+  flex: 1;
+}
+
+/* Botão voltar */
+.perfil2-btn-voltar {
+  display: block;
+  margin: 16px auto 0;
+  padding: 11px 22px;
+  border: 1px solid #ded5d9;
+  border-radius: 10px;
+  background: #fff;
+  color: #642c43;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.perfil2-btn-voltar:hover {
+  background: #f7edf1;
+}
+
+@media (max-width: 480px) {
+  .perfil-endereco-linha {
+    flex-direction: column;
+  }
+
+  .perfil2-btn-voltar {
+    width: 100%;
+  }
+}

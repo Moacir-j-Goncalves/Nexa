@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
@@ -124,7 +123,7 @@ function Menu() {
         aria-hidden={!aberto}
       >
         <div className="menu-lateral-titulo">
-          <img src={Logo} alt="NEXA" />
+          {/* A imagem do logo foi removida daqui */}
 
           <button
             type="button"

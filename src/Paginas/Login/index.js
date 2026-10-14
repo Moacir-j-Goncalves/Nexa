@@ -1,52 +1,83 @@
-import './Login.css';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Menu from '../../Componentes/Menu/index.js';
 import logo from '../../Componentes/Imagens/N_Icone.png';
-import fundo from '../../Componentes/Imagens/nexa_fundo.jpg';
+import fundo from '../../Componentes/Imagens/nexa_fundo.jpg'; // Ajusta o caminho do fundo se necessário
+import './Login.css';
 
 function Login() {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [erro, setErro] = useState('');
   const navigate = useNavigate();
 
-  function handleLogin() {
-    localStorage.setItem('nexaUsuario', 'logado');
-    navigate('/agendamento');
+  function handleSubmit(e) {
+    e.preventDefault();
+    setErro('');
+
+    // Validação das credenciais solicitadas
+    //===================================== email e senha nexa===========================================
+    if (email === 'nexatest@gmail.com' && senha === 'nexa@123') { 
+      navigate('/'); // Sucesso: redireciona para a Home    
+    
+    } else {
+      setErro('E-mail ou senha incorretos.'); // Erro: exibe mensagem
+    }
   }
-
+//=======================================================================================================
   return (
-    <div className="login-container" style={{ backgroundImage: `url(${fundo})` }}>
-
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 999 }}>
-        <Menu />
-      </div>
-
+    <div 
+      className="login-container" 
+      style={{ backgroundImage: `url(${fundo})` }}
+    >
       <div className="login-box">
+        {/* Logo */}
+        <img 
+          src={logo} 
+          alt="NEXA" 
+          className="logo" 
+          onClick={() => navigate('/')} 
+        />
 
-        <img src={logo} alt="Logo" className="logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }} />
+        {/* Mensagem de Erro Condicional */}
+        {erro && <div className="mensagem-erro">{erro}</div>}
 
-        <div className="input-group">
-          <label style={{ fontSize: '16px' }}>USUÁRIO</label>
-          <input type="text" placeholder="Digite seu usuário" />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Digite o seu e-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="input-group">
-          <label style={{ fontSize: '16px' }}>SENHA</label>
-          <input type="password" placeholder="Digite sua senha" />
-        </div>
+          <div className="input-group">
+            <label htmlFor="senha">Senha</label>
+            <input
+              type="password"
+              id="senha"
+              placeholder="Digite a sua senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
+            />
+          </div>
 
-        <button className="btn-login" onClick={handleLogin}>
-          Entrar
-        </button>
+          <button type="submit" className="btn-login">
+            Entrar
+          </button>
+        </form>
 
-        <p className="esqueceu" onClick={() => navigate('/esqueceu-senha')}>
+        <div className="esqueceu">
           Esqueceu a senha?
-        </p>
+        </div>
 
-        <hr />
-
-        <p className="primeiro-acesso" onClick={() => navigate('/primeiro-acesso')}>
-          Primeiro acesso?
-        </p>
-
+        <div className="primeiro-acesso" onClick={() => navigate('/cadastro')}>
+          Primeiro acesso? Cadastre-se
+        </div>
       </div>
     </div>
   );

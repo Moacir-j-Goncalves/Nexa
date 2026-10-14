@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Menu from '../../Componentes/Menu';
 
@@ -25,7 +25,6 @@ function Home() {
   const navigate = useNavigate();
 
   // Categorias exibidas no carrossel
-  // Barbearias aparece antes de Salões de beleza
   const categorias = [
     {
       nome: 'Barbearias',
@@ -62,48 +61,40 @@ function Home() {
       filtro: 'psicologo',
       imagem: psicologoImg,
     },
-    {
-      nome: 'Massagista',
-      filtro: 'massagista',
-      imagem: null,
-    },
-     {
-      nome: 'Adicionar',
-      filtro: '',
-      imagem: null,
-    },
   ];
 
   // Profissionais mais avaliados
   const profissionais = [
     {
       nome: 'Studio Bella',
+      categoria: 'Salão de beleza',
+      localizacao: 'Recife, PE',
       avaliacao: '4.9',
       imagem: studioBellaImg,
       rota: '/perfil-salao/1',
     },
     {
       nome: 'Espaço Glamour',
+      categoria: 'Manicure e Pedicure',
+      localizacao: 'Olinda, PE',
       avaliacao: '4.8',
       imagem: espacoGlamourImg,
       rota: '/perfil-salao/2',
     },
     {
       nome: 'Beauty Center',
-      avaliacao: '5.0',
+      categoria: 'Estética & Beleza',
+      localizacao: 'Paulista, PE',
+      avaliacao: '4.9',
       imagem: beautyCenterImg,
       rota: '/perfil-salao/3',
     },
   ];
 
-  // Direciona para a busca da categoria selecionada
   function irParaCategoria(categoria) {
-    navigate(
-      `/buscar?categoria=${encodeURIComponent(categoria)}`
-    );
+    navigate(`/buscar?categoria=${encodeURIComponent(categoria)}`);
   }
 
-  // Navegação do carrossel
   function scrollCarousel(direction) {
     const carousel = document.getElementById('carousel');
 
@@ -121,18 +112,14 @@ function Home() {
         carousel.scrollWidth - 5;
 
       carousel.scrollTo({
-        left: chegouAoFim
-          ? 0
-          : carousel.scrollLeft + distancia,
+        left: chegouAoFim ? 0 : carousel.scrollLeft + distancia,
         behavior: 'smooth',
       });
     } else {
       const chegouAoInicio = carousel.scrollLeft <= 5;
 
       carousel.scrollTo({
-        left: chegouAoInicio
-          ? carousel.scrollWidth
-          : carousel.scrollLeft - distancia,
+        left: chegouAoInicio ? carousel.scrollWidth : carousel.scrollLeft - distancia,
         behavior: 'smooth',
       });
     }
@@ -143,7 +130,6 @@ function Home() {
       className="home"
       style={{ backgroundImage: `url(${fundo})` }}
     >
-      {/* Menu principal */}
       <Menu />
 
       <main className="home-content">
@@ -157,12 +143,10 @@ function Home() {
             Conectando clientes aos melhores profissionais da sua região.
           </p>
 
-          {/* Campo de busca */}
           <form
             className="search-box"
             onSubmit={(e) => {
               e.preventDefault();
-
               const campo = e.currentTarget.elements.busca;
               const termo = campo.value.trim();
 
@@ -180,20 +164,16 @@ function Home() {
               aria-label="Buscar serviço"
             />
 
-            <button type="submit">
-              Buscar
-            </button>
+            <button type="submit">Buscar</button>
           </form>
         </section>
 
-        {/* Categorias com imagens */}
+        {/* Categorias */}
         <section className="categorias">
           <div className="secao-titulo">
             <div>
               <h2>Categorias</h2>
-              <p>
-                Encontre o serviço ideal para você.
-              </p>
+              <p>Encontre o serviço ideal para você.</p>
             </div>
 
             <button
@@ -205,7 +185,6 @@ function Home() {
             </button>
           </div>
 
-          {/* Carrossel de categorias */}
           <div className="carousel-container">
             <button
               className="carousel-btn left"
@@ -221,9 +200,7 @@ function Home() {
                 <button
                   key={categoria.filtro}
                   className="card"
-                  onClick={() =>
-                    irParaCategoria(categoria.filtro)
-                  }
+                  onClick={() => irParaCategoria(categoria.filtro)}
                   type="button"
                 >
                   {categoria.imagem ? (
@@ -238,14 +215,9 @@ function Home() {
                     </div>
                   )}
 
-                  <span className="categoria-nome">
-                    {categoria.nome}
-                  </span>
+                  <span className="categoria-nome">{categoria.nome}</span>
 
-                  <span
-                    className="categoria-seta"
-                    aria-hidden="true"
-                  >
+                  <span className="categoria-seta" aria-hidden="true">
                     →
                   </span>
                 </button>
@@ -268,10 +240,16 @@ function Home() {
           <div className="secao-titulo">
             <div>
               <h2>Mais avaliados</h2>
-              <p>
-                Conheça alguns dos profissionais em destaque.
-              </p>
+              <p>Os profissionais mais bem avaliados da nossa plataforma.</p>
             </div>
+
+            <button
+              className="ver-todos"
+              onClick={() => navigate('/buscar')}
+              type="button"
+            >
+              Ver todos os destaques <span aria-hidden="true">→</span>
+            </button>
           </div>
 
           <div className="Card-grid">
@@ -283,28 +261,35 @@ function Home() {
                 tabIndex={0}
                 role="link"
                 onKeyDown={(e) => {
-                  if (
-                    e.key === 'Enter' ||
-                    e.key === ' '
-                  ) {
+                  if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     navigate(profissional.rota);
                   }
                 }}
               >
-                <img
-                  src={profissional.imagem}
-                  alt={profissional.nome}
-                  className="card-img"
-                />
+                {/* Imagem com Badge */}
+                <div className="card-img-container">
+                  <img
+                    src={profissional.imagem}
+                    alt={profissional.nome}
+                    className="card-img"
+                  />
+                  <span className="card-badge-nota">
+                    <span aria-hidden="true" className="star-icon">★</span>
+                    {profissional.avaliacao}
+                  </span>
+                </div>
 
+                {/* Informações detalhadas */}
                 <div className="professional-info">
+                  <span className="card-categoria">{profissional.categoria}</span>
                   <h3>{profissional.nome}</h3>
 
-                  <p className="avaliacao">
-                    <span aria-hidden="true">★</span>{' '}
-                    {profissional.avaliacao}
-                  </p>
+                  {profissional.localizacao && (
+                    <p className="card-localizacao">
+                      📍 {profissional.localizacao}
+                    </p>
+                  )}
 
                   <button
                     type="button"

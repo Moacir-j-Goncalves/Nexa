@@ -1,4 +1,6 @@
-/* RESET E CONFIGURAÇÕES GERAIS */
+/* ========================================
+   RESET E CONFIGURAÇÕES GERAIS
+======================================== */
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +9,7 @@
 
 body {
   font-family: Arial, sans-serif;
+  color: #50151f;
 }
 
 img {
@@ -14,150 +17,9 @@ img {
   height: auto;
 }
 
-/* UTILITÁRIOS DE LAYOUT */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* ESTRUTURA PRINCIPAL DA PÁGINA (HOME) */
-.home {
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-}
-
-.home-content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-/* SEÇÃO HERO PRINCIPAL (Boas-vindas e busca) */
-.hero {
-  text-align: center;
-  color: #fff;
-  margin-top: 40px;
-  margin-bottom: 80px;
-}
-
-/* AJUSTE ESPECÍFICO PARA A LOGO NO HERO */
-.hero .Logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.hero .Logo img {
-  max-width: 260px; /* Ajuste a largura limite da logo conforme desejado */
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
-.hero p {
-  font-size: 1.1rem;
-  color: #f1d8d2;
-  margin-bottom: 30px;
-}
-
-/* BARRA DE BUSCA (SEARCH BOX) */
-.search-box {
-  max-width: 600px;
-  margin: auto;
-  display: flex;
-}
-
-.search-box input {
-  flex: 1;
-  padding: 15px;
-  border: none;
-  outline: none;
-  border-radius: 12px 0 0 12px;
-}
-
-.search-box button {
-  border: none;
-  background: #7d0f24;
-  color: white;
-  padding: 0 25px;
-  border-radius: 0 12px 12px 0;
-  cursor: pointer;
-}
-
-/* SEÇÃO DE CATEGORIAS E CARROSSEL */
-.categories,
-.categorias {
-  margin-bottom: 40px;
-  text-align: left;
-}
-
-.categories h2,
-.categorias h2 {
-  color: #fdf6f0;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.carousel-container {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 16px;
-  padding: 12px;
-  width: 100%;
-  scroll-snap-type: x mandatory;
-}
-
-.carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.card {
-  flex: 0 0 180px;
-  height: 140px;
-  background: #fdf6f0;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #5b0012;
-  cursor: pointer;
-  text-align: center;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-  scroll-snap-align: start;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
 /* ========================================
-   NEXA — PÁGINA INICIAL
+   ESTRUTURA PRINCIPAL DA HOME
 ======================================== */
-
 .home {
   min-height: 100vh;
   width: 100%;
@@ -166,7 +28,8 @@ img {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  color: #50151f;
+  display: flex;
+  flex-direction: column;
 }
 
 .home-content {
@@ -176,9 +39,8 @@ img {
 }
 
 /* ========================================
-   BANNER PRINCIPAL
+   SEÇÃO HERO (BANNER PRINCIPAL & BUSCA)
 ======================================== */
-
 .hero {
   display: flex;
   flex-direction: column;
@@ -207,12 +69,10 @@ img {
   margin: 0 0 28px;
   font-size: 18px;
   line-height: 1.6;
+  color: #f1d8d2;
 }
 
-/* ========================================
-   BUSCA
-======================================== */
-
+/* Campo de busca */
 .search-box {
   display: flex;
   width: min(650px, 100%);
@@ -255,9 +115,8 @@ img {
 }
 
 /* ========================================
-   TÍTULOS DAS SEÇÕES
+   TÍTULOS DAS SEÇÕES E BOTÕES "VER TODOS"
 ======================================== */
-
 .categorias,
 .Cards {
   width: 100%;
@@ -285,27 +144,32 @@ img {
   font-size: 14px;
 }
 
+/* Botões "Ver todos" estilizados */
 .ver-todos {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 0;
-  border: none;
-  background: transparent;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
   color: #fff8f2;
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
 .ver-todos:hover {
-  text-decoration: underline;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
 }
 
 /* ========================================
    CARROSSEL DE CATEGORIAS
 ======================================== */
-
 .carousel-container {
   position: relative;
   width: 100%;
@@ -328,60 +192,43 @@ img {
   display: none;
 }
 
-/* Card individual */
-
 .categorias .card {
   position: relative;
   isolation: isolate;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-
   flex: 0 0 210px;
   height: 190px;
   padding: 18px;
-
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 18px;
-
   background: #6e2633;
   box-shadow: 0 6px 20px rgba(42, 8, 15, 0.15);
-
   text-align: left;
   cursor: pointer;
   scroll-snap-align: start;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-/* Imagem */
 
 .categoria-img {
   position: absolute;
   inset: 0;
   z-index: -2;
-
   display: block;
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   object-position: center;
-
   transition: transform 0.4s ease;
 }
-
-/* Degradê para facilitar a leitura */
 
 .categorias .card::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-
   background: linear-gradient(
     to top,
     rgba(45, 7, 17, 0.88) 0%,
@@ -390,12 +237,9 @@ img {
   );
 }
 
-/* Nome da categoria */
-
 .categoria-nome {
   position: relative;
   z-index: 1;
-
   max-width: calc(100% - 24px);
   color: #fff8f2;
   font-size: 15px;
@@ -404,44 +248,31 @@ img {
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Seta no canto */
-
 .categoria-seta {
   position: absolute;
   z-index: 1;
   right: 12px;
   bottom: 12px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 30px;
   height: 30px;
   border-radius: 50%;
-
   background: #8a1734;
   color: #fff8f2;
   font-size: 18px;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
-
-/* Categoria sem imagem */
 
 .categoria-sem-imagem {
   position: absolute;
   inset: 0;
   z-index: -2;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background:
-    radial-gradient(circle at 70% 25%, #a65d6b, transparent 45%),
+  background: radial-gradient(circle at 70% 25%, #a65d6b, transparent 45%),
     linear-gradient(135deg, #7b263a, #3e101b);
 }
 
@@ -449,8 +280,6 @@ img {
   color: rgba(255, 248, 242, 0.3);
   font-size: 80px;
 }
-
-/* Interações */
 
 .categorias .card:hover {
   transform: translateY(-4px);
@@ -466,40 +295,25 @@ img {
   transform: translateX(3px);
 }
 
-.categorias .card:focus-visible {
-  outline: 3px solid #e8c5b5;
-  outline-offset: 3px;
-}
-
-/* Botões do carrossel */
-
 .carousel-btn {
   position: absolute;
   z-index: 5;
   top: 50%;
   transform: translateY(-65%);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 42px;
   height: 42px;
   padding: 0;
-
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-
   background: #8a1734;
   color: #fff8f2;
   font-size: 27px;
-
   box-shadow: 0 4px 12px rgba(42, 8, 15, 0.2);
   cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .carousel-btn:hover {
@@ -516,9 +330,8 @@ img {
 }
 
 /* ========================================
-   PROFISSIONAIS MAIS AVALIADOS
+   SEÇÃO PROFISSIONAIS MAIS AVALIADOS
 ======================================== */
-
 .Card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -530,16 +343,13 @@ img {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 20px;
-
   background: #fff7f0;
   color: #50151f;
-
   box-shadow: 0 8px 24px rgba(42, 8, 15, 0.12);
   cursor: pointer;
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .professional-card:hover {
@@ -547,44 +357,82 @@ img {
   box-shadow: 0 14px 30px rgba(42, 8, 15, 0.18);
 }
 
-.card-img {
+.card-img-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.card-img-container .card-img {
   display: block;
   width: 100%;
-  height: 210px;
+  height: 100%;
   object-fit: cover;
+}
+
+.card-badge-nota {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #50151f;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.star-icon {
+  color: #f59e0b;
 }
 
 .professional-info {
   padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-categoria {
+  font-size: 0.75rem;
+  color: #8c7776;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
 }
 
 .professional-info h3 {
-  margin: 0 0 10px;
+  margin: 0 0 6px;
   font-size: 18px;
+  color: #351016;
+  font-weight: 700;
 }
 
-.avaliacao {
-  margin: 0 0 16px;
+.card-localizacao {
+  font-size: 0.825rem;
   color: #68434a;
-  font-size: 14px;
-}
-
-.avaliacao span {
-  color: #b77924;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .professional-info button {
   width: 100%;
   min-height: 42px;
   padding: 10px 16px;
-
+  margin-top: auto;
   border: none;
   border-radius: 10px;
-
   background: #8a1734;
   color: #fff8f2;
-
   font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
   transition: background 0.2s ease;
 }
@@ -594,140 +442,23 @@ img {
 }
 
 /* ========================================
-   TABLETS
+   RESPONSIVIDADE
 ======================================== */
-
 @media (max-width: 900px) {
   .home-content {
     padding-right: 24px;
     padding-left: 24px;
   }
 
-  .hero {
-    padding-top: 60px;
-    padding-bottom: 52px;
-  }
-
   .Card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
-
-  .card-img {
-    height: 190px;
-  }
 }
 
-/* ========================================
-   CELULARES
-======================================== */
-
 @media (max-width: 600px) {
-  .home {
-    background-attachment: scroll;
-    background-position: center top;
-  }
-
   .home-content {
     padding: 0 16px 32px;
-  }
-
-  .hero {
-    padding: 42px 0 40px;
-  }
-
-  .Logo {
-    margin-bottom: 14px;
-  }
-
-  .Logo img {
-    width: min(210px, 65vw);
-    max-height: 100px;
-  }
-
-  .hero > p {
-    max-width: 340px;
-    margin-bottom: 22px;
-    font-size: 15px;
-  }
-
-  .search-box {
-    min-height: 48px;
-    border-radius: 12px;
-  }
-
-  .search-box input {
-    padding: 0 12px;
-    font-size: 13px;
-  }
-
-  .search-box button {
-    padding: 0 16px;
-    font-size: 13px;
-  }
-
-  .categorias,
-  .Cards {
-    margin-bottom: 34px;
-  }
-
-  .secao-titulo {
-    align-items: flex-start;
-    margin-bottom: 15px;
-  }
-
-  .secao-titulo h2 {
-    font-size: 21px;
-  }
-
-  .secao-titulo p {
-    max-width: 260px;
-    font-size: 12px;
-    line-height: 1.5;
-  }
-
-  .ver-todos {
-    padding-top: 5px;
-    font-size: 12px;
-  }
-
-  .carousel {
-    gap: 12px;
-    padding-bottom: 14px;
-  }
-
-  .categorias .card {
-    flex-basis: 155px;
-    height: 150px;
-    padding: 12px;
-    border-radius: 14px;
-  }
-
-  .categoria-nome {
-    max-width: calc(100% - 16px);
-    font-size: 13px;
-  }
-
-  .categoria-seta {
-    right: 8px;
-    bottom: 8px;
-    width: 25px;
-    height: 25px;
-    font-size: 15px;
-  }
-
-  .carousel-btn {
-    width: 34px;
-    height: 34px;
-    font-size: 23px;
-  }
-
-  .carousel-btn.left {
-    left: -9px;
-  }
-
-  .carousel-btn.right {
-    right: -9px;
   }
 
   .Card-grid {
@@ -735,190 +466,9 @@ img {
     gap: 16px;
   }
 
-  .professional-card {
-    border-radius: 16px;
+  .secao-titulo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
-
-  .card-img {
-    height: 210px;
-  }
-
-  .professional-info {
-    padding: 15px;
-  }
-}
-
-/* ========================================
-   CELULARES PEQUENOS
-======================================== */
-
-@media (max-width: 360px) {
-  .home-content {
-    padding-right: 12px;
-    padding-left: 12px;
-  }
-
-  .categorias .card {
-    flex-basis: 140px;
-    height: 135px;
-  }
-
-  .categoria-nome {
-    font-size: 12px;
-  }
-
-  .secao-titulo h2 {
-    font-size: 19px;
-  }
-
-  .search-box button {
-    padding: 0 12px;
-  }
-}
-
-/* Respeitar a preferência por movimento reduzido */
-
-@media (prefers-reduced-motion: reduce) {
-  .categorias .card,
-  .categoria-img,
-  .categoria-seta,
-  .carousel-btn,
-  .professional-card {
-    transition: none;
-  }
-}
-
-/* BOTÕES DE NAVEGAÇÃO DO CARROSSEL */
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(122, 28, 28, 0.6);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  cursor: pointer;
-  font-size: 22px;
-  transition: background 0.3s, box-shadow 0.3s;
-  z-index: 20;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
-
-.carousel-btn.left {
-  left: -80px; /* Ajustado para não extrapolar limites da tela */
-}
-
-.carousel-btn.right {
-  right: -80px;
-}
-
-.carousel-btn:hover {
-  background: rgba(61, 12, 12, 0.8);
-}
-
-/* SEÇÃO DE CARTÕES DE PROFISSIONAIS (MAIS AVALIADOS) */
-.Cards h2 {
-  color: #fdf6f0;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.Card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-}
-
-.professional-card {
-  background: #f8f3f0;
-  padding: 20px;
-  border-radius: 20px;
-}
-
-.card-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 12px;
-}
-
-.professional-card h3 {
-  color: #5b0012;
-  margin-bottom: 10px;
-}
-
-.professional-card p {
-  color: #666;
-  margin-bottom: 15px;
-}
-
-.professional-card button {
-  font-size: large;
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: #5b0012;
-  color: white;
-  cursor: pointer;
-}
-
-.professional-card button:hover {
-  background: #7d0f24;
-}
-
-/* SEÇÃO SECUNDÁRIA DE HERO / INSTITUCIONAL */
-.home__hero {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 80px 24px;
-}
-
-.home__hero-titulo {
-  font-size: clamp(2rem, 6vw, 3.2rem);
-  font-weight: 800;
-  color: #D7BDA6;
-  line-height: 1.2;
-  margin-bottom: 20px;
-}
-
-.home__hero-titulo span {
-  color: #AB7743;
-}
-
-.home__hero-texto {
-  font-size: 1.05rem;
-  color: #B7957F;
-  line-height: 1.7;
-  max-width: 480px;
-  margin-bottom: 36px;
-}
-
-/* RODAPÉ DA PÁGINA (FOOTER) */
-.home__footer {
-  text-align: center;
-  padding: 24px;
-  border-top: 1px solid rgba(183, 149, 127, 0.12);
-  color: #B7957F;
-  font-size: 0.8rem;
-}
-
-.home__logo {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #D7BDA6;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.home__logo span {
-  color: #AB7743;
 }
